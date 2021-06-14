@@ -1,0 +1,12 @@
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.dll
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.pdb
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\Acme.GeoGarbage.Dominio.csproj.AssemblyReference.cache
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\Acme.GeoGarbage.Dominio.csproj.CoreCompileInputs.cache
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.dll
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.pdb
+C:\GitHub\Acme\GeoGarbage\app\Acme.GeoGarbage.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.dll
+C:\GitHub\Acme\GeoGarbage\app\Acme.GeoGarbage.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.pdb
+C:\GitHub\Acme\GeoGarbage\app\Acme.GeoGarbage.Dominio\obj\Debug\Acme.GeoGarbage.Dominio.csproj.AssemblyReference.cache
+C:\GitHub\Acme\GeoGarbage\app\Acme.GeoGarbage.Dominio\obj\Debug\Acme.GeoGarbage.Dominio.csproj.CoreCompileInputs.cache
+C:\GitHub\Acme\GeoGarbage\app\Acme.GeoGarbage.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.dll
+C:\GitHub\Acme\GeoGarbage\app\Acme.GeoGarbage.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.pdb

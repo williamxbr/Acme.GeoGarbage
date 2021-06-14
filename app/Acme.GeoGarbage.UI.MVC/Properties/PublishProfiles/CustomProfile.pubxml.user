@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://ftp.williamlima.com.br/wwwroot/ambiental</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/Admin/Views/Home/Index.cshtml">
+      <publishTime>03/14/2017 15:58:26</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Home/IndexPartial.cshtml">
+      <publishTime>03/16/2017 22:42:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
+      <publishTime>03/14/2017 15:41:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Usuario/Criar.cshtml">
+      <publishTime>03/15/2017 15:47:56</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Usuario/Index.cshtml">
+      <publishTime>03/15/2017 22:04:01</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Usuario/IndexPartial.cshtml">
+      <publishTime>03/15/2017 21:45:24</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/web.config">
+      <publishTime>03/13/2017 18:02:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/_ViewStart.cshtml">
+      <publishTime>03/14/2017 10:54:16</publishTime>
+    </File>
+    <File Include="Areas/Monitoramento/Views/Home/IndexPartial.cshtml">
+      <publishTime>03/15/2017 20:53:50</publishTime>
+    </File>
+    <File Include="Areas/Monitoramento/Views/Shared/_Layout.cshtml">
+      <publishTime>03/15/2017 20:00:52</publishTime>
+    </File>
+    <File Include="Areas/Monitoramento/Views/web.config">
+      <publishTime>03/15/2017 19:55:31</publishTime>
+    </File>
+    <File Include="Areas/Monitoramento/Views/_ViewStart.cshtml">
+      <publishTime>03/15/2017 20:00:51</publishTime>
+    </File>
+    <File Include="Areas/Relatorio/Views/Construtor/IndexPartial.cshtml">
+      <publishTime>04/08/2017 22:37:45</publishTime>
+    </File>
+    <File Include="Areas/Relatorio/Views/Home/IndexPartial.cshtml">
+      <publishTime>03/16/2017 22:43:40</publishTime>
+    </File>
+    <File Include="Areas/Relatorio/Views/Shared/_Layout.cshtml">
+      <publishTime>03/15/2017 19:46:49</publishTime>
+    </File>
+    <File Include="Areas/Relatorio/Views/web.config">
+      <publishTime>03/13/2017 18:02:54</publishTime>
+    </File>
+    <File Include="Areas/Relatorio/Views/_ViewStart.cshtml">
+      <publishTime>03/15/2017 19:46:48</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>11/23/2016 23:51:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>06/15/2015 02:06:24</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/23/2012 15:23:58</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/03/2014 20:33:56</publishTime>
+    </File>
+    <File Include="bin/Ninject.dll">
+      <publishTime>03/21/2014 16:14:40</publishTime>
+    </File>
+    <File Include="bin/Ninject.Web.Common.dll">
+      <publishTime>03/21/2014 17:08:58</publishTime>
+    </File>
+    <File Include="bin/Ninject.Web.Mvc.dll">
+      <publishTime>04/29/2014 02:35:10</publishTime>
+    </File>
+    <File Include="bin/SmartDrive.Ambiental.Aplicacao.dll">
+      <publishTime>04/08/2017 22:48:14</publishTime>
+    </File>
+    <File Include="bin/SmartDrive.Ambiental.Dominio.dll">
+      <publishTime>04/08/2017 22:48:13</publishTime>
+    </File>
+    <File Include="bin/SmartDrive.Ambiental.Repositorio.dll">
+      <publishTime>04/08/2017 22:48:14</publishTime>
+    </File>
+    <File Include="bin/SmartDrive.Ambiental.Repositorio.dll.config">
+      <publishTime>03/13/2017 19:13:22</publishTime>
+    </File>
+    <File Include="bin/SmartDrive.Ambiental.Servicos.dll">
+      <publishTime>04/08/2017 22:48:14</publishTime>
+    </File>
+    <File Include="bin/SmartDrive.Ambiental.UI.MVC.dll">
+      <publishTime>04/08/2017 22:48:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/28/2015 05:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/28/2015 05:02:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/11/2014 16:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/28/2015 05:02:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/28/2015 05:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/28/2015 05:04:30</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>03/13/2017 17:59:52</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/14/2017 08:37:19</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/08/2017 22:48:32</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

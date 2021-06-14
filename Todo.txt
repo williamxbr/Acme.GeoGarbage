@@ -1,0 +1,5 @@
+Transferindo a linha de um table para outro
+https://linkstraffic.net/onclick-event-jquery-transfer-table-rows-another-table/
+
+$('#listaDestino li').each(function () { console.log($(this).context.innerText); });
+$('#listaDestino li').each(function () { console.log($(this).context.id); });

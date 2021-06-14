@@ -1,0 +1,58 @@
+USE ProjetoAmbiental
+//Usuario
+INSERT INTO Usuario Values('8E61168C-5C62-4A8B-B624-FE136EB089E2','William','williamxbr@gmail.com','Will','will',1,0)
+
+//Tabelas
+INSERT INTO ConstrutorTabela Values('397CEC27-7B55-4C36-89BE-ED9E410505BE','Jornada','Jornada')
+INSERT INTO ConstrutorTabela Values('538A4856-EF14-4E2A-84D1-D19F0F877FDE','DescargaAterro','DescargaAterro')
+INSERT INTO ConstrutorTabela Values('4BC75924-A47E-45E7-A978-BC42931779B3','Cliente','Cliente')
+INSERT INTO ConstrutorTabela Values('1C5B3F09-3645-4669-B288-761C90FA933A','DescargaDeColeta','DescargaDeColeta')
+INSERT INTO ConstrutorTabela Values('A444231A-C3ED-4B9F-9A12-7579E388DCF8','Device','Device')
+INSERT INTO ConstrutorTabela Values('19D25B7F-E93F-455A-B0A8-93AAD7F5C552','DeviceInstalado','DeviceInstalado')
+INSERT INTO ConstrutorTabela Values('CC5969D6-26CB-46A1-B807-0CEB78FBB922','Garagem','Garagem')
+INSERT INTO ConstrutorTabela Values('9677D6D8-3C01-410E-8EA7-16F174F85252','Interrupcao','Interrupcao')
+INSERT INTO ConstrutorTabela Values('07C1951A-9711-4DF5-A6E7-A066ED742D06','Jornada','Jornada')
+INSERT INTO ConstrutorTabela Values('76FDF3F0-2238-4785-8BC7-CD1213AB15C3','MotivosInterrupcao','MotivosInterrupcao')
+INSERT INTO ConstrutorTabela Values('1D2F1626-FC8D-437D-8E40-3BF38615F1F4','Perfil','Perfil')
+INSERT INTO ConstrutorTabela Values('2F7B01FE-26A0-4E4C-9BA3-186163A76DE9','RecursosDaJornada','RecursosDaJornada')
+INSERT INTO ConstrutorTabela Values('73376649-21A5-4B0E-BED8-584423F078C1','RecursosDeColeta','RecursosDeColeta')
+INSERT INTO ConstrutorTabela Values('1873431D-C725-42D9-8EFD-D53E15F387D3','RetornoParaCompletarColeta','RetornoParaCompletarColeta')
+INSERT INTO ConstrutorTabela Values('5B7219F7-0A4D-4C51-8972-886779083239','RetornoParaGaragem','RetornoParaGaragem')
+INSERT INTO ConstrutorTabela Values('0D630024-E54E-4E63-9336-2B329C3BEE4B','RotaRealizada','RotaRealizada')
+INSERT INTO ConstrutorTabela Values('EE354A96-0C12-4031-BD8B-B975EF2571D9','SelecaoDeNovoSetor','SelecaoDeNovoSetor')
+INSERT INTO ConstrutorTabela Values('CA96D11C-0D69-47A9-AB20-2293858F4C43','Setor','Setor')
+INSERT INTO ConstrutorTabela Values('36F39202-D71A-4AC8-B7D0-9F6821B457C7','SetoresDaJornada','SetoresDaJornada')
+INSERT INTO ConstrutorTabela Values('F06B1BB4-6AEE-4023-BBEE-7E43683C1A02','Veiculo','Veiculo')
+
+//Campos da Tabelas
+INSERT INTO ConstrutorCampo Values('934E36E3-637D-4DF9-B4EC-48D6C8F2D584','397CEC27-7B55-4C36-89BE-ED9E410505BE','IdJornada','IdJornada',0,1,1,1)
+INSERT INTO ConstrutorCampo Values('534BEE17-70C1-497A-8A97-181BC9066AE3','397CEC27-7B55-4C36-89BE-ED9E410505BE','InicioJornada','InicioJornada',2,1,1,1)
+INSERT INTO ConstrutorCampo Values('186A11DE-73A9-4BAB-96FF-36F1AB8469C5','397CEC27-7B55-4C36-89BE-ED9E410505BE','IdVeiculo','IdVeiculo',0,1,1,1)
+INSERT INTO ConstrutorCampo Values('D430ABD9-E25C-40C3-947C-9AFEA80774E8','397CEC27-7B55-4C36-89BE-ED9E410505BE','OdometroInicial','OdometroInicial',1,1,1,1)
+INSERT INTO ConstrutorCampo Values('06AD0717-B837-408A-8545-723DBDF3B17D','397CEC27-7B55-4C36-89BE-ED9E410505BE','HorimetroInicial','HorimetroInicial',1,1,1,1)
+INSERT INTO ConstrutorCampo Values('B030EE78-3742-494D-86FC-8CF303F153F9','397CEC27-7B55-4C36-89BE-ED9E410505BE','FimDaJornada','FimDaJornada'2,1,1,1)
+INSERT INTO ConstrutorCampo Values('BAC09FB6-2C48-45AA-B88C-3C46DDBF47CB','397CEC27-7B55-4C36-89BE-ED9E410505BE','OdometroFinal','OdometroFinal',1,1,1,1)
+INSERT INTO ConstrutorCampo Values('637E82A8-7070-43FB-B30B-0862393F734B','397CEC27-7B55-4C36-89BE-ED9E410505BE','HorimetroFinal','HorimetroFinal',1,1,1,1)
+INSERT INTO ConstrutorCampo Values('9EF78442-707C-4AA6-8EE2-9398EA70F27D','397CEC27-7B55-4C36-89BE-ED9E410505BE','Status','Status',1,1,1,1)
+INSERT INTO ConstrutorCampo Values('7C094348-2AEC-4BA5-A272-EB2C890A3986','397CEC27-7B55-4C36-89BE-ED9E410505BE','DescargaPendente','DescargaPendente',2,1,1,1) 
+
+INSERT INTO ConstrutorCampo Values('09B48F1C-2496-4A28-8668-A07AF5346C96','F06B1BB4-6AEE-4023-BBEE-7E43683C1A02','IdVeiculo','IdVeiculo',0,1,1,1)
+INSERT INTO ConstrutorCampo Values('E2B3C2B0-7BCC-4BDE-997D-FE2EEEF222F0','F06B1BB4-6AEE-4023-BBEE-7E43683C1A02','IdentificacaoNoCliente','IdentificacaoNoCliente',2,1,1,1)
+INSERT INTO ConstrutorCampo Values('9473BB18-1A33-4BCB-A52E-A0C3AC23A6F1','F06B1BB4-6AEE-4023-BBEE-7E43683C1A02','IdCliente','IdCliente',0,1,1,1)
+INSERT INTO ConstrutorCampo Values('BDE0FC97-E806-4214-8F28-6C43CDDA41A1','F06B1BB4-6AEE-4023-BBEE-7E43683C1A02','Ativo','Ativo',1,1,1,1)
+
+
+SELECT TOP (1000) [IdConstrutorChaveEstrangeira]
+      ,A.[IdConstrutorTabela]
+	  ,B.Nome
+      ,A.[IdConstrutorCampo]
+	  ,C.Nome
+      ,A.[IdConstrutorTabelaMestre]
+	  ,D.Nome
+      ,A.[IdConstrutorCampoMestre]
+	  ,E.Nome
+  FROM [ProjetoAmbiental].[dbo].[ConstrutorChaveEstrangeira] A
+  INNER JOIN  ConstrutorTabela B ON (A.IdConstrutorTabela = B.IdConstrutorTabela)
+  INNER JOIN ConstrutorCampo C ON (A.IdConstrutorCampo = C.IdConstrutorCampo)
+  INNER JOIN ConstrutorTabela D ON (A.IdConstrutorTabelaMestre = D.IdConstrutorTabela)
+  INNER JOIN ConstrutorCampo E ON (A.IdConstrutorCampoMestre = E.IdConstrutorCampo)

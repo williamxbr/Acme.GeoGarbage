@@ -1,0 +1,75 @@
+﻿body {
+    background: #2F2F2F;
+    font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    margin: 0px;
+    display: block;
+    height: 100px;
+    width: 100%;
+}
+
+
+.heading {
+    height: 80px;
+    background-image: url(../img/SmartDrivelogo.png);
+    background-repeat: no-repeat;
+    background-position: left 20px center, right 20px center;
+}
+
+hr {
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 3px solid #FFD400;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    color: #2F2F2F;
+    background-color: #FFD400;
+    font: 14px Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.nav-pills > li > a {
+    color: #2F2F2F;
+    background-color: #727272;
+    font: 14px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+    background-color: #FFD400;
+    font: 14px Verdana, Geneva, Arial, Helvetica, sans-serif;    
+}
+
+.navbar-btn {
+    background-color: #9f9f9f;
+    color: white;
+}
+
+.navbar-btn > a {
+    color: white;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+

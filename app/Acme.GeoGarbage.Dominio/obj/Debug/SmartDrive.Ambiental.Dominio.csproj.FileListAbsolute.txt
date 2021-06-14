@@ -1,0 +1,10 @@
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.csprojResolveAssemblyReference.cache
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.pdb
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.dll
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Dominio\bin\Debug\SmartDrive.Ambiental.Dominio.pdb
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.csprojResolveAssemblyReference.cache
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.dll
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Dominio\obj\Debug\SmartDrive.Ambiental.Dominio.pdb

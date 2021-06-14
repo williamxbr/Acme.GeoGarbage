@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SmartDrive - Ambiental</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="heading">
+
+    </div>
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <hr/>
+    <div class="container-fluid" style="background-color: #2F2F2F">
+        <button type="button" class="btn btn-default navbar-btn">AJUDA</button>
+        <button type="button" class="btn btn-default navbar-btn">SUGESTÕES</button>
+        <button type="button" class="btn btn-default navbar-btn">SENHA</button>
+        <button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-log-out"> </span>@Html.ActionLink(" SAIR", "Logout", "Login", new { Area = ""}, new {})</button>
+    </div>
+</nav>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

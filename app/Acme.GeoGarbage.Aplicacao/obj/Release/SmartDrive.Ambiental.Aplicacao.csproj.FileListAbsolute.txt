@@ -1,0 +1,7 @@
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\bin\Release\SmartDrive.Ambiental.Aplicacao.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\bin\Release\SmartDrive.Ambiental.Aplicacao.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\bin\Release\SmartDrive.Ambiental.Dominio.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\bin\Release\SmartDrive.Ambiental.Dominio.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\obj\Release\SmartDrive.Ambiental.Aplicacao.csprojResolveAssemblyReference.cache
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\obj\Release\SmartDrive.Ambiental.Aplicacao.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Aplicacao\obj\Release\SmartDrive.Ambiental.Aplicacao.pdb

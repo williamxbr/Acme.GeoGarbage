@@ -1,0 +1,12 @@
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\SmartDrive.Ambiental.Repositorio.dll.config
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\SmartDrive.Ambiental.Repositorio.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\SmartDrive.Ambiental.Repositorio.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\EntityFramework.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\EntityFramework.SqlServer.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\SmartDrive.Ambiental.Dominio.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\SmartDrive.Ambiental.Dominio.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\EntityFramework.xml
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\bin\Release\EntityFramework.SqlServer.xml
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\obj\Release\SmartDrive.Ambiental.Repositorio.csprojResolveAssemblyReference.cache
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\obj\Release\SmartDrive.Ambiental.Repositorio.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Repositorio\obj\Release\SmartDrive.Ambiental.Repositorio.pdb

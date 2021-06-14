@@ -1,0 +1,6 @@
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Utilidades\bin\Debug\Acme.GeoGarbage.Utilidades.dll
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Utilidades\bin\Debug\Acme.GeoGarbage.Utilidades.pdb
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\Acme.GeoGarbage.Utilidades.csproj.AssemblyReference.cache
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\Acme.GeoGarbage.Utilidades.csproj.CoreCompileInputs.cache
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\Acme.GeoGarbage.Utilidades.dll
+C:\GitHub\Acme\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\Acme.GeoGarbage.Utilidades.pdb

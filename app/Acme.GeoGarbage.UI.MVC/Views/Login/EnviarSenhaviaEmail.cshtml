@@ -1,0 +1,40 @@
+﻿@model Acme.GeoGarbage.UI.MVC.Areas.Admin.ViewModels.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Enviar Senha via Email";
+}
+
+<<div class="row-fluid">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+
+        @using (Html.BeginForm("EnviarSenhaviaEmail", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            @Html.ValidationSummary(true, String.Empty, new { @class = "alert alert-danger" })
+
+            <div class="panel panel-default">
+                <div class="panel-heading">ENVIAR SENHA PARA O E-MAIL</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-default" value="Enviar" />
+                    <input type="reset" class="btn btn-default" value="Limpar" />
+                </div>
+            </div>
+
+        }
+    </div>
+    <div class="col-md-4"></div>
+</div>

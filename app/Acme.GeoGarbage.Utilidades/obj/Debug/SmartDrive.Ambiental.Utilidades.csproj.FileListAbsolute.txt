@@ -1,0 +1,14 @@
+D:\Work\SmartDrive\Ambiental\SmartDrive.Ambiental.Utilidades\bin\Debug\SmartDrive.Ambiental.Utilidades.dll
+D:\Work\SmartDrive\Ambiental\SmartDrive.Ambiental.Utilidades\bin\Debug\SmartDrive.Ambiental.Utilidades.pdb
+D:\Work\SmartDrive\Ambiental\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.dll
+D:\Work\SmartDrive\Ambiental\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Utilidades\bin\Debug\SmartDrive.Ambiental.Utilidades.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Utilidades\bin\Debug\SmartDrive.Ambiental.Utilidades.pdb
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.csprojResolveAssemblyReference.cache
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.dll
+D:\Work\SmartDrive\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.pdb
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Utilidades\bin\Debug\SmartDrive.Ambiental.Utilidades.dll
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Utilidades\bin\Debug\SmartDrive.Ambiental.Utilidades.pdb
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.csprojResolveAssemblyReference.cache
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.dll
+C:\Work\Ambiental_20170411\Ambiental\app\SmartDrive.Ambiental.Utilidades\obj\Debug\SmartDrive.Ambiental.Utilidades.pdb

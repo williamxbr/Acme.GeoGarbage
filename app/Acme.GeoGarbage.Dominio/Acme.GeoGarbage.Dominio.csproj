@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{28B665BD-A534-4BE3-BF60-2AA05428F984}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartDrive.Ambiental.Dominio</RootNamespace>
+    <AssemblyName>SmartDrive.Ambiental.Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entidades\ConstrutorCampo.cs" />
+    <Compile Include="Entidades\ConstrutorChaveEstrangeira.cs" />
+    <Compile Include="Entidades\ConstrutorTabela.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\ConfiguracaoApp.cs" />
+    <Compile Include="Entidades\ConsultaDinamica.cs" />
+    <Compile Include="Entidades\ConsultaDinamicaCampo.cs" />
+    <Compile Include="Entidades\ConsultaDinamicaCondicao.cs" />
+    <Compile Include="Entidades\ConsultaDinamicaTabela.cs" />
+    <Compile Include="Entidades\ConsultaPasta.cs" />
+    <Compile Include="Entidades\DescargaAterro.cs" />
+    <Compile Include="Entidades\DescargaDeColeta.cs" />
+    <Compile Include="Entidades\Device.cs" />
+    <Compile Include="Entidades\DeviceInstalado.cs" />
+    <Compile Include="Entidades\Garagem.cs" />
+    <Compile Include="Entidades\Interrupcao.cs" />
+    <Compile Include="Entidades\Jornada.cs" />
+    <Compile Include="Entidades\MotivosInterrupcao.cs" />
+    <Compile Include="Entidades\Perfil.cs" />
+    <Compile Include="Entidades\RecursosDaJornada.cs" />
+    <Compile Include="Entidades\RecursosDeColeta.cs" />
+    <Compile Include="Entidades\RetornoParaCompletarColeta.cs" />
+    <Compile Include="Entidades\RetornoParaGaragem.cs" />
+    <Compile Include="Entidades\RotaRealizada.cs" />
+    <Compile Include="Entidades\SelecaoDeNovoSetor.cs" />
+    <Compile Include="Entidades\Setor.cs" />
+    <Compile Include="Entidades\SetoresDaJornada.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\UsuariosDeCliente.cs" />
+    <Compile Include="Entidades\UsuariosPerfil.cs" />
+    <Compile Include="Entidades\Veiculo.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Interfaces\Aplicacao\IAplicacaoServicoBase.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConstrutorCampoAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConstrutorChaveEstrangeiraAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConstrutorTabelaAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConsultaDinamicaAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConsultaDinamicaCampoAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConsultaDinamicaCondicaoAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConsultaDinamicaTabelaAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IConsultaPastaAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Aplicacao\IUsuarioAplicacaoServico.cs" />
+    <Compile Include="Interfaces\Repositorios\IConsultaDinamicaCampoRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConsultaDinamicaCondicaoRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConsultaDinamicaRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConstrutorCampoRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConstrutorChaveEstrangeiraRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConstrutorTabelaRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConsultaDinamicaTabelaRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IConsultaPastaRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IRepositorioBase.cs" />
+    <Compile Include="Interfaces\Repositorios\IUsuarioRepositorio.cs" />
+    <Compile Include="Interfaces\Servicos\IConstrutorCampoServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConstrutorChaveEstrangeiraServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConstrutorTabelaServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConsultaDinamicaCampoServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConsultaDinamicaCondicaoServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConsultaDinamicaServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConsultaDinamicaTabelaServico.cs" />
+    <Compile Include="Interfaces\Servicos\IConsultaPastaServico.cs" />
+    <Compile Include="Interfaces\Servicos\IServicoBase.cs" />
+    <Compile Include="Interfaces\Servicos\IUsuarioServico.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,927 @@
+﻿<div class="row-fluid" style="padding: 10px">
+    <div class="container-fluid">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#TabConstrutorTabelas" data-toggle="tab"><b>TABELAS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorCampos" data-toggle="tab"><b>CAMPOS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorFuncoes" data-toggle="tab"><b>FUNÇÕES</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorGrupos" data-toggle="tab"><b>GRUPOS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorFiltros" data-toggle="tab"><b>FILTROS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorCalculos" data-toggle="tab"><b>CALCULOS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorPosicao" data-toggle="tab"><b>POSIÇÃO</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorPreview" data-toggle="tab"><b>PREVIEW</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorArquivamento" data-toggle="tab"><b>ARQUIVAMENTO</b></a>
+            </li>
+        </ul>
+        <hr />
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="TabConstrutorTabelas" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="checkbox" style="display: inline;float: right">
+                        <input type="checkbox" id="ckDistinct" />Distinto
+                    </div>
+                    <div class="panel-heading">
+                        Tabelas Disponiveis
+                    </div>
+                    <div class="panel-body">
+                        <table id="tabelasdisponiveis" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <ul id="tabelasselecionadas"></ul>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Relacionamentos</div>
+                    <div class="panel-body">
+                        <ul id="listaRelacionamento"></ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane" id="TabConstrutorCampos" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="TabConstrutorFuncoes" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_funcoes" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_funcoes" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                    <th>Função</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="TabConstrutorGrupos" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_grupo" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_grupo" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="TabConstrutorFiltros" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_filtro" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campos no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_filtro" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Campo</th>
+                                    <th>Operador</th>
+                                    <th>Valor</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane" id="TabConstrutorCalculos">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_calculo" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campos no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_calculo" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Campos</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="TabConstrutorPosicao" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_posicao" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campos no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_posicao" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="TabConstrutorPreview" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Query</div>
+                    <div class="panel-body">
+                        <textarea class="form-control" rows="7" cols="10" id="text_sql"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="TabConstrutorArquivamento" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <form id="saveQuery-form" onsubmit="validasaveQueryform();">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Escolha uma pasta</div>
+                            <div class="panel-body">
+                                <ul id="listaPastas" class="list-group"></ul>
+                            </div>
+                        </div>
+                        <label for="nomeconsulta">Nome da consulta</label>
+                        <input type="text" class="form-control" id="nomeconsulta" required>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCreateFolder">Criar Pasta</button>
+                        <button type="submit" class="btn btn-success">Salvar consulta</button>
+                        <button type="reset" class="btn btn-danger">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModalCreateFolder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Criar Pasta</h4>
+            </div>
+            <form id="createfolder-form" method="post">
+                <div class="modal-body">
+                    <input type="text" id="folder" class="form-control" />
+                    <p id="msg"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+    var tabelas = new Array();
+    var campos = new Array();
+    var funcoes = new Array();
+    var filtros = new Array();
+    var posicoes = new Array();
+
+    var condicoes = new Array();
+    var groupby = new Array();
+    var orderby = new Array();
+
+    var pasta = "";
+
+    function alteraCorlistaPasta(id) {
+        var listali = $("#listaPastas li");
+
+        for (index = 0; index <= listali.length; ++index) {
+            var linha = listali[index].id;
+            if (linha == id) {
+                var listitemactiva = document.getElementById(id);
+                listitemactiva.style.backgroundColor = "#dddddd";
+                pasta = id;
+            } else {
+                var listiteminativa = document.getElementById(linha);
+                listiteminativa.style.backgroundColor = "#ffffff";
+            }
+
+        }
+    }
+
+    $('#saveQuery-form')
+        .on('submit', function (e) {
+            e.preventDefault();
+            var nomeconsulta = this.nomeconsulta.value;
+            $.ajax({
+                url: '/Relatorio/Consulta/CriarConsultaDinamica',
+                type: 'POST',
+                data: {pasta , nomeconsulta, postTabelas: tabelas, postCampos: campos, postFuncoes : funcoes },
+                success: function (msg) {
+                    alert(msg);
+                },
+                failure: function (msg) {
+                    alert(msg);
+                }
+            });
+        });
+
+
+    $(function () {
+        $('#createfolder-form').on('submit', function (e) {
+            var folder = $('#folder').val();
+            e.preventDefault();
+            $.ajax({
+                url: '/Relatorio/Consulta/CriarPasta',
+                type: 'POST',
+                data: { pasta: folder },
+                success: function (msg) {
+                    getPastas();
+                    $('#msg').html(msg);
+                }
+            });
+        });
+    });
+
+    function getPastas() {
+        var url = "/Relatorio/Consulta/ListaPastas";
+        var listaPastas = $("#listaPastas");
+        $.getJSON(url, "", function (response) {
+            listaPastas.empty();
+            $.each(response, function (index, item) {
+                var li = document.createElement("li");
+                li.setAttribute('id', item.IdConsultaPasta);
+                li.setAttribute('class', 'list-group-item');
+                li.setAttribute('onmousedown', 'alteraCorlistaPasta(this.id)');
+                li.append(item.NomePasta);
+                listaPastas.append(li);
+            });
+        });
+    }
+
+    function getTabelas() {
+        $.ajax({
+            url: "/Relatorio/Construtor/BuscaTabelas",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: "{}",
+            dataType: "json",
+            success: function (data) {
+                var row = "";
+                $.each(data,
+                    function (index, item) {
+                        row += "<tr id='tabelaid" + item.IdConstrutorTabela + "'><td>" + item.Nome + "</td></tr>";
+                    });
+                $("#tabelasdisponiveis tbody").html(row);
+            },
+            error: function (result) {
+                alert("Error");
+            }
+        });
+    }
+
+    function getCampos() {
+
+        if (tabelas.length == 0) {
+            limpaCampos();
+        } else {
+            $.ajax({
+                url: "/Relatorio/Construtor/BuscaCampos",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: { tabelas: tabelas },
+                dataType: "json",
+                success: function (data) {
+                    var row = "";
+                    $.each(data,
+                        function (index, item) {
+                            row += "<tr id='campoid" + item.IdConstrutorCampo + "'><td>" + item.Nome + "</td><td>" + item.ConstrutorTabela.Nome + "." + item.Nome + "</td><td>" + item.ConstrutorTabela.Nome + "</td></tr>";
+                        });
+
+                    $("#camposdisponiveis tbody").html(row);
+                    var rowBody = row.replace(/campoid/g, "campofuncoesid");
+                    $("#camposdisponiveis_funcoes tbody").html(rowBody);
+                    var rowGrupo = row.replace(/campoid/g, "campogruposid");
+                    $("#camposdisponiveis_grupo tbody").html(rowGrupo);
+                    var rowFiltro = row.replace(/campoid/g, "campofiltrosid");
+                    $("#camposdisponiveis_filtro tbody").html(rowFiltro);
+                    var rowCalculo = row.replace(/campoid/g, "campocalculosid");
+                    $("#camposdisponiveis_calculo tbody").html(rowCalculo);
+                    var rowPosicao = row.replace(/campoid/g, "campoposicaoid");
+                    $("#camposdisponiveis_posicao tbody").html(rowPosicao);
+
+                    getRelacionamentos();
+                    checaCamposSelecionados();
+
+                },
+                error: function (result) {
+                    alert("Problemas no carregamentos dos campos");
+                }
+            });
+        }
+    }
+
+    function getRelacionamentos() {
+        $.ajax({
+            url: "/Relatorio/Construtor/BuscaRelacionamentos",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            data: { tabelas: tabelas },
+            dataType: "json",
+            success: function (data) {
+                var linha = "";
+                $.each(data,
+                    function (index, item) {
+                        linha += '<li id="liRelat"' +
+                            item.IdConstrutorChaveEstrangeira +
+                            '">' +
+                            item.ConstrutorTabela.Nome +
+                            '.' +
+                            item.ConstrutorCampo.Nome +
+                            '=' +
+                            item.ConstrutorTabelaMestre.Nome +
+                            '.' +
+                            item.ConstrutorCampoMestre.Nome +
+                            '</li>';
+
+                    });
+
+                $('#listaRelacionamento').html(linha);
+            },
+            error: function (result) {
+                alert("Problemas no carregamentos dos relacionementos");
+            }
+        }
+        );
+    }
+
+    function getFuncao(select) {
+        var trid = select.parentNode.parentNode.id.replace("campofuncoesiddest","");
+        select.parentNode.innerText = select.value;
+        funcoes[funcoes.indexOf(trid)] += "&" + select.value;
+    }
+
+    function getFiltro(objeto, id) {
+        var seletor = $("#select_operador_" + id)[0].parentNode;
+        seletor.innerText = $("#select_operador_"+id)[0].value;
+        var inputvalor = $("#input_valor_" + id)[0].parentNode;
+        inputvalor.innerText = $("#input_valor_" + id)[0].value;
+        var trid = objeto.parentNode.parentNode.id.replace("campofiltrosiddest", "");
+        filtros[filtros.indexOf(trid)] += "&" + seletor.innerText + "&" + inputvalor.innerText;
+    }
+
+
+    function montaConsulta() {
+        var texto = 'SELECT ';
+
+        var dados = $('#camposselecionados tbody tr');
+
+        for (index = 0; index < dados.length; ++index) {
+            texto += dados[index].children[1].textContent;
+            if (index < (dados.length - 1))
+                texto += ', ';
+        }
+
+        texto += ' FROM ';
+
+        dados = $('#tabelasselecionadas li');
+
+        for (index = 0; index < dados.length; ++index) {
+            texto += dados[index].textContent;
+            if (index < (dados.length - 1))
+                texto += ', ';
+        }
+
+        texto += ' WHERE 1=1 ';
+
+        dados = $('#listaRelacionamento li');
+
+        for (index = 0; index < dados.length; ++index) {
+            texto += ' AND ' + dados[index].textContent;
+        }
+
+        dados = $('#camposselecionados_filtro tbody tr');
+
+        for (index = 0; index < dados.length; ++index) {
+            texto += ' AND ' + dados[index].children[0].textContent + dados[index].children[1].textContent + dados[index].children[2].textContent;
+        }
+
+        dados = $('#camposselecionados_posicao tbody tr');
+
+        for (index = 0; index < dados.length; ++index) {
+            texto += dados[index].children[1].textContent;
+            if (index < (dados.length - 1))
+                texto += ', ';
+        }
+
+
+        $('#text_sql').html(texto);
+    }
+
+    function montaGroupBy() {
+        var dados = $('#camposselecionados tbody').html();
+        dados.replace(/campoid/g, "campogruposid");
+        $("#camposselecionados_grupo tbody").html(dados);
+    }
+
+    function limpaCampos() {
+        $("#camposdisponiveis tbody").html('');
+        $("#camposdisponiveis_funcoes tbody").html('');
+        $("#camposdisponiveis_grupo tbody").html('');
+        $("#camposdisponiveis_filtro tbody").html('');
+        $("#camposdisponiveis_calculo tbody").html('');
+        $("#camposdisponiveis_posicao tbody").html('');
+
+        $("#camposselecionados tbody").html('');
+        $("#camposselecionados_funcoes tbody").html('');
+        $("#camposselecionados_grupo tbody").html('');
+        $("#camposselecionados_filtro tbody").html('');
+        $("#camposselecionados_calculo tbody").html('');
+        $("#camposselecionados_posicao tbody").html('');
+
+        $('#listaRelacionamento').html('');
+
+        campos = [];
+        funcoes = [];
+        filtros = [];
+        posicoes = [];
+
+    }
+
+    function checaCamposSelecionados() {
+        for (index = campos.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis tbody").html().search(campos[index]) == -1) {
+                var tr = $("#campoiddest" + campos[index]);
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+                campos.splice(index, 1);
+            }
+        }
+
+        for (index = funcoes.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis_funcoes tbody").html().search(funcoes[index]) == -1) {
+                var tr = $("#campofuncoesiddest" + funcoes[index]);
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+                funcoes.splice(index, 1);
+            }
+        }
+
+        for (index = filtros.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis_filtro tbody").html().search(filtros[index]) == -1) {
+                var tr = $("#campofiltrosiddest" + filtros[index]);
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+                filtros.splice(index, 1);
+            }
+        }
+
+        for (index = posicoes.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis_posicao tbody").html().search(posicoes[index]) == -1) {
+                var tr = $("#campoposicaoiddest" + posicoes[index]);
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+                posicoes.splice(index, 1);
+            }
+        }
+
+    }
+
+
+
+    $(document).ready(function () {
+
+        tabelas = [];
+        campos = [];
+        funcoes = [];
+        filtros = [];
+        posicoes = [];
+
+        condicoes = [];
+        groupby = [];
+        orderby = [];
+
+
+        $(document).on("dblclick", "#tabelasdisponiveis tbody tr", function (event) {
+
+            event.preventDefault();
+
+            var ok = 0;
+            var theid = $(this).attr('id').replace("tabelaid", "");
+
+            var novastabelas = new Array();
+
+            for (index = 0; index < tabelas.length; ++index) {
+
+                if (tabelas[index] == theid) {
+
+                    $(this).css("background-color", "#ffccff");
+
+                    var tr = $("#tabelaiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novastabelas.push(tabelas[index]);
+                }
+            }
+
+            tabelas = novastabelas;
+
+            if (!ok) {
+
+                tabelas.push(theid);
+
+                $(this).css("background-color", "#cacaca");
+
+                $('#tabelasselecionadas').append('<li id="tabelaiddest' +
+                    theid +
+                    '">' +
+                    $(this).find("td").eq(0).html() +
+                    '</li>');
+
+            }
+
+            getCampos();
+            montaConsulta();
+
+        });
+
+        $(document).on("dblclick",
+            "#camposdisponiveis tbody tr",
+            function (event) {
+
+                event.preventDefault();
+                var ok = 0;
+                var theid = $(this).attr('id').replace("campoid", "");
+
+                var novoscampos = new Array();
+
+                for (index = 0; index < campos.length; ++index) {
+
+                    if (campos[index] == theid) {
+
+                        $(this).css("background-color", "#ffccff");
+
+                        var tr = $("#campoiddest" + theid);
+                        tr.css("background-color", "#FF3700");
+                        tr.fadeOut(400, function () {
+                            tr.remove();
+                        });
+
+                        ok = 1;
+                    }
+                    else {
+                        novoscampos.push(campos[index]);
+                    }
+                }
+
+                campos = novoscampos;
+
+                if (!ok) {
+
+                    campos.push(theid);
+
+                    $(this).css("background-color", "#cacaca");
+
+                    $('#camposselecionados').append('<tr id="campoiddest' + theid + '">'
+                        + '<td>' + $(this).find("td").eq(0).html() + '</td>'
+                        + '<td>' + $(this).find("td").eq(1).html() + '</td>'
+                        + '<td>' + $(this).find("td").eq(2).html() + '</td>'
+                        + '</tr>');
+
+                }
+
+                montaConsulta();
+
+            });
+
+        $(document).on("dblclick", "#camposdisponiveis_funcoes tbody tr", function (event) {
+
+            event.preventDefault();
+            var ok = 0;
+            var theid = $(this).attr('id').replace("campofuncoesid", "");
+
+            var novasfuncoes = new Array();
+
+            for (index = 0; index < funcoes.length; ++index) {
+
+                if (funcoes[index] == theid) {
+
+                    $(this).css("background-color", "#ffccff");
+
+                    var tr = $("#campofuncoesiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novasfuncoes.push(funcoes[index]);
+                }
+            }
+
+            funcoes = novasfuncoes;
+
+            if (!ok) {
+
+                funcoes.push(theid);
+
+                $(this).css("background-color", "#cacaca");
+
+                $('#camposselecionados_funcoes').append('<tr id="campofuncoesiddest' + theid + '">'
+                    + '<td>' + $(this).find("td").eq(0).html() + '</td>'
+                    + '<td>' + $(this).find("td").eq(1).html() + '</td>'
+                    + '<td>' + $(this).find("td").eq(2).html() + '</td>'
+                    + '<td>  <select name="filter_for" onchange="getFuncao(this)" > '
+                    + '<option value = "Escolha">--Escolha a opção--</option> '
+                    + '<option value = "Média">Média</option> '
+                    + '<option value = "Contar">Contar</option>'
+                    + '<option value = "Máximo">Máximo</option>'
+                    + '<option value = "Mínimo">Mínimo</option>'
+                    + '<option value = "Soma">Soma</option>'
+                    + '</select ></td>'
+                    + '</tr>');
+            }
+
+            montaGroupBy();
+
+        });
+
+        $(document).on("dblclick", "#camposdisponiveis_grupo tbody tr", function (event) {
+
+        });
+
+        $(document).on("dblclick", "#camposdisponiveis_filtro tbody tr", function (event) {
+
+            event.preventDefault();
+            var ok = 0;
+            var theid = $(this).attr('id').replace("campofiltrosid", "");
+
+            var novasfiltros = new Array();
+
+            for (index = 0; index < filtros.length; ++index) {
+
+                if (filtros[index] == theid) {
+
+                    $(this).css("background-color", "#ffccff");
+
+                    var tr = $("#campofiltrosiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novasfiltros.push(filtros[index]);
+                }
+            }
+
+            filtros = novasfiltros;
+
+            if (!ok) {
+
+                filtros.push(theid);
+
+                $(this).css("background-color", "#cacaca");
+
+                var trid = filtros.length.toString();
+
+                $('#camposselecionados_filtro').append('<tr id="campofiltrosiddest' + theid + '">'
+                    + '<td>' + $(this).find("td").eq(1).html() + '</td>'
+                    + '<td>  <select id="select_operador_' + trid +'" class="form-control"> '
+                    + '<option value = "Escolha" disabled="true" selected>--Escolha a opção--</option> '
+                    + '<option value = "=">=</option> '
+                    + '<option value = "<>"><></option> '
+                    + '<option value = "<"><</option> '
+                    + '<option value = "<="><=</option> '
+                    + '<option value = ">">></option> '
+                    + '<option value = ">=">>=</option> '
+                    + '<option value = "Contém">Contém</option> '
+                    + '<option value = "Não Contém">Não Contém</option> '
+                    + '<option value = "Entre">Entre</option> '
+                    + '<option value = "Não está Entre">Não está Entre</option> '
+                    + '<option value = "Na Lista">Na Lista</option> '
+                    + '<option value = "Não está na Lista">Não está na Lista</option> '
+                    + '<option value = "Vazio">Vazio</option> '
+                    + '<option value = "Não é Vazio">Não é Vazio</option> '
+                    + '</select ></td>'
+                    + '<td> <input id="input_valor_' + trid +'" type="text" name="valor" class="form-control">  </td>'
+                    + '<td><button type="button" class="btn btn-default" onclick="getFiltro(this,' + trid +')">Efetiva</button></td>'
+                    + '</tr>');
+            }
+
+            montaConsulta();
+
+        });
+
+        $(document).on("dblclick", "#camposdisponiveis_calculo tbody tr", function (event) {
+
+        });
+
+        $(document).on("dblclick", "#camposdisponiveis_calculo tbody tr", function (event) {
+
+        });
+
+        $(document).on("dblclick", "#camposdisponiveis_posicao tbody tr", function (event) {
+
+            event.preventDefault();
+            var ok = 0;
+            var theid = $(this).attr('id').replace("campoposicaoid", "");
+
+            var novasposicoes = new Array();
+
+            for (index = 0; index < posicoes.length; ++index) {
+
+                if (posicoes[index] == theid) {
+
+                    $(this).css("background-color", "#ffccff");
+
+                    var tr = $("#campoposicaoiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novasposicoes.push(posicoes[index]);
+                }
+            }
+
+            posicoes = novasposicoes;
+
+            if (!ok) {
+
+                posicoes.push(theid);
+
+                $(this).css("background-color", "#cacaca");
+
+                $('#camposselecionados_posicao').append('<tr id="campoposicaoiddest' + theid + '">'
+                    + '<td>' + $(this).find("td").eq(0).html() + '</td>'
+                    + '<td>' + $(this).find("td").eq(1).html() + '</td>'
+                    + '<td>' + $(this).find("td").eq(2).html() + '</td>'
+                    + '</tr>');
+            }
+
+            montaConsulta();
+
+        });
+
+
+        getTabelas();
+        getPastas();
+
+
+    });
+
+</script>

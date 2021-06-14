@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Apresentacao", "0 - Apresentacao", "{955C38D1-467C-4A90-BBBB-08792B767315}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Aplicacao", "1 - Aplicacao", "{25E26D6A-49D7-4A9A-8B8D-8DF7EDB7C6C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dominio", "3 - Dominio", "{073ED530-72BD-4A85-A388-6EEB7C0BFDE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Repositorio", "4 - Repositorio", "{44C194E0-4663-4855-A1AD-315F8B168F4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Utilidades", "5 - Utilidades", "{CF594F3B-DF93-4D95-817F-0179B4077A45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Servicos", "2 - Servicos", "{A37DED76-E398-426A-B687-27BA69EAE634}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{F80EBE39-8BE2-474A-982E-DED6F39472A0}"
+	ProjectSection(SolutionItems) = preProject
+		Anotacoes.txt = Anotacoes.txt
+		Deploy.sql = Deploy.sql
+		Todo.txt = Todo.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.GeoGarbage.Dominio", "app\Acme.GeoGarbage.Dominio\Acme.GeoGarbage.Dominio.csproj", "{28B665BD-A534-4BE3-BF60-2AA05428F984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.GeoGarbage.Repositorio", "app\Acme.GeoGarbage.Repositorio\Acme.GeoGarbage.Repositorio.csproj", "{3C23B635-D833-48AD-A4C7-571B5EB34042}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.GeoGarbage.Servicos", "app\Acme.GeoGarbage.Servicos\Acme.GeoGarbage.Servicos.csproj", "{C0220A1D-0C11-4A2A-BBBC-18A174F0F4E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.GeoGarbage.Aplicacao", "app\Acme.GeoGarbage.Aplicacao\Acme.GeoGarbage.Aplicacao.csproj", "{CF8DD421-5765-45F4-8C09-F49C132D5043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.GeoGarbage.UI.MVC", "app\Acme.GeoGarbage.UI.MVC\Acme.GeoGarbage.UI.MVC.csproj", "{B8F7A9CD-7663-4FB0-8AF5-97F134AD7F29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28B665BD-A534-4BE3-BF60-2AA05428F984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B665BD-A534-4BE3-BF60-2AA05428F984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B665BD-A534-4BE3-BF60-2AA05428F984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B665BD-A534-4BE3-BF60-2AA05428F984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C23B635-D833-48AD-A4C7-571B5EB34042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C23B635-D833-48AD-A4C7-571B5EB34042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C23B635-D833-48AD-A4C7-571B5EB34042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C23B635-D833-48AD-A4C7-571B5EB34042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0220A1D-0C11-4A2A-BBBC-18A174F0F4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0220A1D-0C11-4A2A-BBBC-18A174F0F4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0220A1D-0C11-4A2A-BBBC-18A174F0F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0220A1D-0C11-4A2A-BBBC-18A174F0F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8DD421-5765-45F4-8C09-F49C132D5043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF8DD421-5765-45F4-8C09-F49C132D5043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF8DD421-5765-45F4-8C09-F49C132D5043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF8DD421-5765-45F4-8C09-F49C132D5043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F7A9CD-7663-4FB0-8AF5-97F134AD7F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F7A9CD-7663-4FB0-8AF5-97F134AD7F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F7A9CD-7663-4FB0-8AF5-97F134AD7F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F7A9CD-7663-4FB0-8AF5-97F134AD7F29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28B665BD-A534-4BE3-BF60-2AA05428F984} = {073ED530-72BD-4A85-A388-6EEB7C0BFDE1}
+		{3C23B635-D833-48AD-A4C7-571B5EB34042} = {44C194E0-4663-4855-A1AD-315F8B168F4E}
+		{C0220A1D-0C11-4A2A-BBBC-18A174F0F4E2} = {A37DED76-E398-426A-B687-27BA69EAE634}
+		{CF8DD421-5765-45F4-8C09-F49C132D5043} = {25E26D6A-49D7-4A9A-8B8D-8DF7EDB7C6C0}
+		{B8F7A9CD-7663-4FB0-8AF5-97F134AD7F29} = {955C38D1-467C-4A90-BBBB-08792B767315}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82F8961A-CBB6-4545-9291-C106C170CEEF}
+	EndGlobalSection
+EndGlobal
