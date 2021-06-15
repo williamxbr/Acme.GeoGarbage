@@ -40,10 +40,11 @@
                         Tabelas Disponiveis
                     </div>
                     <div class="panel-body">
-                        <table id="tabelasdisponiveis" class="table table-bordered table-hover">
+                        <table id="tabelasdisponiveis" class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Tabela</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -200,16 +201,39 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Campos Disponiveis</div>
                     <div class="panel-body">
-                        <table id="camposdisponiveis_calculo" class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Apelido do Campo</th>
-                                    <th>Campos no SQL</th>
-                                    <th>Tabela</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <div class="row-fluid">
+                            <div class="col-md-4">
+                                <table id="camposdisponiveis_calculo" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Campos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
@@ -218,8 +242,8 @@
                         <table id="camposselecionados_calculo" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Campos</th>
-                                    <th>Tabela</th>
+                                    <th>Apelido</th>
+                                    <th>Expressão</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -263,7 +287,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Query</div>
                     <div class="panel-body">
-                        <textarea class="form-control" rows="7" cols="10" id="text_sql"></textarea>
+                        <form id="executesql-form">
+                            <textarea class="form-control" rows="7" cols="10" id="text_sql"></textarea>
+                            <button type="submit" class="btn btn-success">Executar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Resultado</div>
+                    <div class="panel-body">
+                        <div id="result"></div>
                     </div>
                 </div>
             </div>
@@ -324,6 +357,8 @@
     var groupby = new Array();
     var orderby = new Array();
 
+    var lista = [];
+
     var pasta = "";
 
     function alteraCorlistaPasta(id) {
@@ -343,6 +378,7 @@
         }
     }
 
+
     $('#saveQuery-form')
         .on('submit', function (e) {
             e.preventDefault();
@@ -350,7 +386,7 @@
             $.ajax({
                 url: '/Relatorio/Consulta/CriarConsultaDinamica',
                 type: 'POST',
-                data: {pasta , nomeconsulta, postTabelas: tabelas, postCampos: campos, postFuncoes : funcoes },
+                data: { pasta: pasta, nomeconsulta: nomeconsulta, postTabelas: tabelas, postCampos: campos, postFuncoes: funcoes },
                 success: function (msg) {
                     alert(msg);
                 },
@@ -377,16 +413,87 @@
         });
     });
 
+
+    //var gridx = new FancyGrid({
+    //    title: 'Resultado',
+    //    renderTo: 'container',
+    //    width: 500,
+    //    height: 400,
+    //    data: { proxy: { url: '/Relatorio/Consulta/Resultado'} },
+    //    defaults: {
+    //        type: 'string',
+    //        width: 100,
+    //        sortable: true,
+    //        filter: {
+    //            header: true,
+    //            emptyText : 'Procura'
+    //        }
+    //    },
+    //    columns: [{ index: 'Status', width: 100, type: 'number', title: 'Status' }]
+    //});
+
+    $('#executesql-form')
+        .on('submit', function (e) {
+            e.preventDefault();
+            var SQL = this.text_sql.value;
+            var grid = $('#result');
+
+            var tabela = $('<table/>');
+            tabela.addClass('table table-bordered');
+            tabela.attr('id', 'preview');
+
+            grid.html(tabela);
+
+            var cabecalho = $('<thead/>');
+            tabela.append(cabecalho);
+
+            var linhacabecalho = $('<tr/>');
+            cabecalho.append(linhacabecalho);
+
+            for (var ind = 0; ind < campos.length; ++ind) {
+                var field = $('<th/>');
+                field.append($("#campoiddest" + campos[ind]).find("td").eq(0).html());
+                linhacabecalho.append(field);
+            }
+
+            var corpo = $('<tbody/>');
+            tabela.append(corpo);
+
+            $.ajax({
+                url: '/Relatorio/Consulta/Resultado',
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: {camposid : campos, SQL: SQL },
+                dataType: "json",
+                success: function (response) {
+                    $.each(response, function (index, item) {
+                        var linha = $('<tr/>');
+                        $.each(item, function (index, field) {
+                            var coluna = $('<td/>');
+                            coluna.append(field);
+                            linha.append(coluna);
+                        });
+                        corpo.append(linha);
+                    });
+                },
+                fail: function (msn) {
+                    console.log(msn);
+                }
+            });
+
+        });
+
     function getPastas() {
         var url = "/Relatorio/Consulta/ListaPastas";
         var listaPastas = $("#listaPastas");
         $.getJSON(url, "", function (response) {
             listaPastas.empty();
             $.each(response, function (index, item) {
-                var li = document.createElement("li");
-                li.setAttribute('id', item.IdConsultaPasta);
-                li.setAttribute('class', 'list-group-item');
-                li.setAttribute('onmousedown', 'alteraCorlistaPasta(this.id)');
+                var li = $('<li/>');
+                li.attr('id', item.IdConsultaPasta);
+                li.addClass('list-group-item');
+                li.attr('onmousedown', 'alteraCorlistaPasta(this.id)');
                 li.append(item.NomePasta);
                 listaPastas.append(li);
             });
@@ -404,7 +511,9 @@
                 var row = "";
                 $.each(data,
                     function (index, item) {
-                        row += "<tr id='tabelaid" + item.IdConstrutorTabela + "'><td>" + item.Nome + "</td></tr>";
+                        row += "<tr><td>" + item.Nome + "</td>";
+                        row += "<td><button id='tabelaid" + item.IdConstrutorTabela + "' type='button' class='botaotd'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>";
+                        row += "</td></tr>";
                     });
                 $("#tabelasdisponiveis tbody").html(row);
             },
@@ -428,9 +537,22 @@
                 dataType: "json",
                 success: function (data) {
                     var row = "";
+                    var rowCalculo = "";
                     $.each(data,
                         function (index, item) {
-                            row += "<tr id='campoid" + item.IdConstrutorCampo + "'><td>" + item.Nome + "</td><td>" + item.ConstrutorTabela.Nome + "." + item.Nome + "</td><td>" + item.ConstrutorTabela.Nome + "</td></tr>";
+                            row += "<tr><td>" +
+                                item.Nome +
+                                "</td><td>" +
+                                item.ConstrutorTabela.Nome +
+                                "." +
+                                item.Nome +
+                                "</td><td>" +
+                                item.ConstrutorTabela.Nome +
+                                "</td><td>";
+                            row += "<button  id='campoid" +
+                                item.IdConstrutorCampo +
+                                "' type='button' class='botaotd'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button></td></tr>";
+                            rowCalculo += "<tr id='campocalculosid" + item.IdConstrutorCampo + "'><td>" + item.ConstrutorTabela.Nome + "." + item.Nome + "</td></tr>";
                         });
 
                     $("#camposdisponiveis tbody").html(row);
@@ -440,7 +562,7 @@
                     $("#camposdisponiveis_grupo tbody").html(rowGrupo);
                     var rowFiltro = row.replace(/campoid/g, "campofiltrosid");
                     $("#camposdisponiveis_filtro tbody").html(rowFiltro);
-                    var rowCalculo = row.replace(/campoid/g, "campocalculosid");
+                    //var rowCalculo = row.replace(/campoid/g, "campocalculosid");
                     $("#camposdisponiveis_calculo tbody").html(rowCalculo);
                     var rowPosicao = row.replace(/campoid/g, "campoposicaoid");
                     $("#camposdisponiveis_posicao tbody").html(rowPosicao);
@@ -492,18 +614,20 @@
     }
 
     function getFuncao(select) {
-        var trid = select.parentNode.parentNode.id.replace("campofuncoesiddest","");
+        var trid = select.parentNode.parentNode.id.replace("campofuncoesiddest", "");
         select.parentNode.innerText = select.value;
         funcoes[funcoes.indexOf(trid)] += "&" + select.value;
+        montaConsulta();
     }
 
     function getFiltro(objeto, id) {
         var seletor = $("#select_operador_" + id)[0].parentNode;
-        seletor.innerText = $("#select_operador_"+id)[0].value;
+        seletor.innerText = $("#select_operador_" + id)[0].value;
         var inputvalor = $("#input_valor_" + id)[0].parentNode;
         inputvalor.innerText = $("#input_valor_" + id)[0].value;
         var trid = objeto.parentNode.parentNode.id.replace("campofiltrosiddest", "");
         filtros[filtros.indexOf(trid)] += "&" + seletor.innerText + "&" + inputvalor.innerText;
+        montaConsulta();
     }
 
 
@@ -536,15 +660,20 @@
             texto += ' AND ' + dados[index].textContent;
         }
 
+
+
         dados = $('#camposselecionados_filtro tbody tr');
 
         for (index = 0; index < dados.length; ++index) {
             texto += ' AND ' + dados[index].children[0].textContent + dados[index].children[1].textContent + dados[index].children[2].textContent;
         }
 
+
         dados = $('#camposselecionados_posicao tbody tr');
 
         for (index = 0; index < dados.length; ++index) {
+            if (index = 0)
+                texto = ' ORDER BY ';
             texto += dados[index].children[1].textContent;
             if (index < (dados.length - 1))
                 texto += ', ';
@@ -641,9 +770,7 @@
         groupby = [];
         orderby = [];
 
-
-        $(document).on("dblclick", "#tabelasdisponiveis tbody tr", function (event) {
-
+        $(document).on("click", "#tabelasdisponiveis tbody tr td button", function (event) {
             event.preventDefault();
 
             var ok = 0;
@@ -655,7 +782,8 @@
 
                 if (tabelas[index] == theid) {
 
-                    $(this).css("background-color", "#ffccff");
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
 
                     var tr = $("#tabelaiddest" + theid);
                     tr.css("background-color", "#FF3700");
@@ -676,12 +804,13 @@
 
                 tabelas.push(theid);
 
-                $(this).css("background-color", "#cacaca");
+                $(this).css("color", "#dd1c1c");
+                $(this).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
 
                 $('#tabelasselecionadas').append('<li id="tabelaiddest' +
                     theid +
                     '">' +
-                    $(this).find("td").eq(0).html() +
+                    $(this.parentElement.parentElement).find("td").eq(0).html() +
                     '</li>');
 
             }
@@ -691,8 +820,9 @@
 
         });
 
-        $(document).on("dblclick",
-            "#camposdisponiveis tbody tr",
+
+        $(document).on("click",
+            "#camposdisponiveis tbody tr td button",
             function (event) {
 
                 event.preventDefault();
@@ -705,7 +835,8 @@
 
                     if (campos[index] == theid) {
 
-                        $(this).css("background-color", "#ffccff");
+                        $(this).css("color", "#0c8c12");
+                        $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
 
                         var tr = $("#campoiddest" + theid);
                         tr.css("background-color", "#FF3700");
@@ -726,12 +857,13 @@
 
                     campos.push(theid);
 
-                    $(this).css("background-color", "#cacaca");
+                    $(this).css("color", "#dd1c1c");
+                    $(this).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
 
                     $('#camposselecionados').append('<tr id="campoiddest' + theid + '">'
-                        + '<td>' + $(this).find("td").eq(0).html() + '</td>'
-                        + '<td>' + $(this).find("td").eq(1).html() + '</td>'
-                        + '<td>' + $(this).find("td").eq(2).html() + '</td>'
+                        + '<td>' + $(this.parentElement.parentElement).find("td").eq(0).html() + '</td>'
+                        + '<td>' + $(this.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+                        + '<td>' + $(this.parentElement.parentElement).find("td").eq(2).html() + '</td>'
                         + '</tr>');
 
                 }
@@ -740,7 +872,7 @@
 
             });
 
-        $(document).on("dblclick", "#camposdisponiveis_funcoes tbody tr", function (event) {
+        $(document).on("click", "#camposdisponiveis_funcoes tbody tr td button", function (event) {
 
             event.preventDefault();
             var ok = 0;
@@ -752,7 +884,8 @@
 
                 if (funcoes[index] == theid) {
 
-                    $(this).css("background-color", "#ffccff");
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
 
                     var tr = $("#campofuncoesiddest" + theid);
                     tr.css("background-color", "#FF3700");
@@ -773,12 +906,13 @@
 
                 funcoes.push(theid);
 
-                $(this).css("background-color", "#cacaca");
+                $(this).css("color", "#dd1c1c");
+                $(this).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
 
                 $('#camposselecionados_funcoes').append('<tr id="campofuncoesiddest' + theid + '">'
-                    + '<td>' + $(this).find("td").eq(0).html() + '</td>'
-                    + '<td>' + $(this).find("td").eq(1).html() + '</td>'
-                    + '<td>' + $(this).find("td").eq(2).html() + '</td>'
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(0).html() + '</td>'
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(2).html() + '</td>'
                     + '<td>  <select name="filter_for" onchange="getFuncao(this)" > '
                     + '<option value = "Escolha">--Escolha a opção--</option> '
                     + '<option value = "Média">Média</option> '
@@ -794,11 +928,7 @@
 
         });
 
-        $(document).on("dblclick", "#camposdisponiveis_grupo tbody tr", function (event) {
-
-        });
-
-        $(document).on("dblclick", "#camposdisponiveis_filtro tbody tr", function (event) {
+        $(document).on("click", "#camposdisponiveis_filtro tbody tr td button", function (event) {
 
             event.preventDefault();
             var ok = 0;
@@ -810,7 +940,8 @@
 
                 if (filtros[index] == theid) {
 
-                    $(this).css("background-color", "#ffccff");
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
 
                     var tr = $("#campofiltrosiddest" + theid);
                     tr.css("background-color", "#FF3700");
@@ -831,13 +962,14 @@
 
                 filtros.push(theid);
 
-                $(this).css("background-color", "#cacaca");
+                $(this).css("color", "#dd1c1c");
+                $(this).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
 
                 var trid = filtros.length.toString();
 
                 $('#camposselecionados_filtro').append('<tr id="campofiltrosiddest' + theid + '">'
-                    + '<td>' + $(this).find("td").eq(1).html() + '</td>'
-                    + '<td>  <select id="select_operador_' + trid +'" class="form-control"> '
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+                    + '<td>  <select id="select_operador_' + trid + '" class="form-control"> '
                     + '<option value = "Escolha" disabled="true" selected>--Escolha a opção--</option> '
                     + '<option value = "=">=</option> '
                     + '<option value = "<>"><></option> '
@@ -854,8 +986,8 @@
                     + '<option value = "Vazio">Vazio</option> '
                     + '<option value = "Não é Vazio">Não é Vazio</option> '
                     + '</select ></td>'
-                    + '<td> <input id="input_valor_' + trid +'" type="text" name="valor" class="form-control">  </td>'
-                    + '<td><button type="button" class="btn btn-default" onclick="getFiltro(this,' + trid +')">Efetiva</button></td>'
+                    + '<td> <input id="input_valor_' + trid + '" type="text" name="valor" class="form-control">  </td>'
+                    + '<td><button type="button" class="btn btn-default" onclick="getFiltro(this,' + trid + ')">Efetiva</button></td>'
                     + '</tr>');
             }
 
@@ -863,15 +995,15 @@
 
         });
 
-        $(document).on("dblclick", "#camposdisponiveis_calculo tbody tr", function (event) {
+        $(document).on("click", "#camposdisponiveis_calculo tbody tr", function (event) {
 
         });
 
-        $(document).on("dblclick", "#camposdisponiveis_calculo tbody tr", function (event) {
+        $(document).on("click", "#camposdisponiveis_calculo tbody tr", function (event) {
 
         });
 
-        $(document).on("dblclick", "#camposdisponiveis_posicao tbody tr", function (event) {
+        $(document).on("click", "#camposdisponiveis_posicao tbody tr td button", function (event) {
 
             event.preventDefault();
             var ok = 0;
@@ -883,7 +1015,8 @@
 
                 if (posicoes[index] == theid) {
 
-                    $(this).css("background-color", "#ffccff");
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
 
                     var tr = $("#campoposicaoiddest" + theid);
                     tr.css("background-color", "#FF3700");
@@ -904,12 +1037,13 @@
 
                 posicoes.push(theid);
 
-                $(this).css("background-color", "#cacaca");
+                $(this).css("color", "#dd1c1c");
+                $(this).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
 
                 $('#camposselecionados_posicao').append('<tr id="campoposicaoiddest' + theid + '">'
-                    + '<td>' + $(this).find("td").eq(0).html() + '</td>'
-                    + '<td>' + $(this).find("td").eq(1).html() + '</td>'
-                    + '<td>' + $(this).find("td").eq(2).html() + '</td>'
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(0).html() + '</td>'
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+                    + '<td>' + $(this.parentElement.parentElement).find("td").eq(2).html() + '</td>'
                     + '</tr>');
             }
 
@@ -923,5 +1057,117 @@
 
 
     });
+
+
+    //$("#jqGrid").jqGrid({
+    //    url: 'data.json',
+    //    mtype: "GET",
+    //    datatype: "json",
+    //    page: 1,
+    //    colModel: [
+    //        {
+    //            label: "Order ID",
+    //            //sorttype: 'integer',
+    //            name: 'OrderID',
+    //            key: true,
+    //            width: 75
+    //        },
+    //        {
+    //            label: "Customer ID",
+    //            name: 'CustomerID',
+    //            width: 150,
+    //            // stype defines the search type control - in this case HTML select (dropdownlist)
+    //            stype: "select",
+    //            // searchoptions value - name values pairs for the dropdown - they will appear as options
+    //            searchoptions: { value: ":[All];ALFKI:ALFKI;ANATR:ANATR;ANTON:ANTON;AROUT:AROUT;BERGS:BERGS;BLAUS:BLAUS;BLONP:BLONP;BOLID:BOLID;BONAP:BONAP;BOTTM:BOTTM;BSBEV:BSBEV;CACTU:CACTU;CENTC:CENTC;CHOPS:CHOPS;COMMI:COMMI;CONSH:CONSH;DRACD:DRACD;DUMON:DUMON;EASTC:EASTC;ERNSH:ERNSH;FAMIA:FAMIA;FOLIG:FOLIG;FOLKO:FOLKO;FRANK:FRANK;FRANR:FRANR;FRANS:FRANS;FURIB:FURIB;GALED:GALED;GODOS:GODOS;GOURL:GOURL;GREAL:GREAL;GROSR:GROSR;HANAR:HANAR;HILAA:HILAA;HUNGC:HUNGC;HUNGO:HUNGO;ISLAT:ISLAT;KOENE:KOENE;LACOR:LACOR;LAMAI:LAMAI;LAUGB:LAUGB;LAZYK:LAZYK;LEHMS:LEHMS;LETSS:LETSS;LILAS:LILAS;LINOD:LINOD;LONEP:LONEP;MAGAA:MAGAA;MAISD:MAISD;MEREP:MEREP;MORGK:MORGK;NORTS:NORTS;OCEAN:OCEAN;OLDWO:OLDWO;OTTIK:OTTIK;PERIC:PERIC;PICCO:PICCO;PRINI:PRINI;QUEDE:QUEDE;QUEEN:QUEEN;QUICK:QUICK;RANCH:RANCH;RATTC:RATTC;REGGC:REGGC;RICAR:RICAR;RICSU:RICSU;ROMEY:ROMEY;SANTG:SANTG;SAVEA:SAVEA;SEVES:SEVES;SIMOB:SIMOB;SPECD:SPECD;SPLIR:SPLIR;SUPRD:SUPRD;THEBI:THEBI;THECR:THECR;TOMSP:TOMSP;TORTU:TORTU;TRADH:TRADH;TRAIH:TRAIH;VAFFE:VAFFE;VICTE:VICTE;VINET:VINET;WANDK:WANDK;WARTH:WARTH;WELLI:WELLI;WHITC:WHITC;WILMK:WILMK;WOLZA:WOLZA" }
+    //        },
+    //        {
+    //            label: "Order Date",
+    //            name: 'OrderDate',
+    //            width: 150,
+    //            sorttype: 'date',
+    //            formatter: 'date',
+    //            srcformat: 'Y-m-d',
+    //            newformat: 'n/j/Y',
+    //            searchoptions: {
+    //                // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
+    //                // use it to place a third party control to customize the toolbar
+    //                dataInit: function (element) {
+    //                    $(element).datepicker({
+    //                        autoclose: true,
+    //                        format: 'd/m/yyyy',
+    //                        orientation: 'bottom'
+    //                    });
+    //                }
+    //            }
+    //        },
+    //        {
+    //            label: "Ship Name",
+    //            name: 'ShipName',
+    //            width: 150,
+    //            searchoptions: {
+    //                // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
+    //                // use it to place a third party control to customize the toolbar
+    //                dataInit: function (element) {
+    //                    $(element).attr("autocomplete", "off").typeahead({
+    //                        appendTo: "body",
+    //                        source: function (query, proxy) {
+    //                            $.ajax({
+    //                                url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/autocompletepbs.php?callback=?&acelem=ShipName',
+    //                                dataType: "jsonp",
+    //                                data: { term: query },
+    //                                success: proxy
+    //                            });
+    //                        }
+    //                    });
+    //                },
+    //                sopt: ['cn']
+    //            }
+    //        },
+    //        {
+    //            label: "Freight",
+    //            sorttype: 'number',
+    //            name: 'Freight', width: 150
+    //        },
+    //    ],
+    //    loadonce: true,
+    //    viewrecords: true,
+    //    width: 780,
+    //    height: 250,
+    //    rowNum: 10,
+    //    pager: "#jqGridPager"
+    //});
+    //// activate the toolbar searching
+    //$('#jqGrid').jqGrid('filterToolbar');
+    //$('#jqGrid').jqGrid('navGrid', "#jqGridPager", {
+    //    search: false, // show search button on the toolbar
+    //    add: false,
+    //    edit: false,
+    //    del: false,
+    //    refresh: true
+    //});
+
+
+    //$("#jsGrid").jsGrid({
+    //    width: "100%",
+    //    height: "400px",
+
+    //    inserting: true,
+    //    editing: true,
+    //    sorting: true,
+    //    paging: true,
+
+    //    data: clients,
+
+    //    fields: [
+    //        { name: "Name", type: "text", width: 150, validate: "required" },
+    //        { name: "Age", type: "number", width: 50 },
+    //        { name: "Address", type: "text", width: 200 },
+    //        { name: "Country", type: "select", items: countries, valueField: "Id", textField: "Name" },
+    //        { name: "Married", type: "checkbox", title: "Is Married", sorting: false },
+    //        { type: "control" }
+    //    ]
+    //});
+
 
 </script>

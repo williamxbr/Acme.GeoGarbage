@@ -38,20 +38,20 @@ hr {
     border-bottom-left-radius: 0px;
 }
 
-.nav-pills > li > a:hover,
-.nav-pills > li > a:focus {
-    background-color: #FFD400;
-    font: 14px Verdana, Geneva, Arial, Helvetica, sans-serif;    
-}
+    .nav-pills > li > a:hover,
+    .nav-pills > li > a:focus {
+        background-color: #FFD400;
+        font: 14px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    }
 
 .navbar-btn {
     background-color: #9f9f9f;
     color: white;
 }
 
-.navbar-btn > a {
-    color: white;
-}
+    .navbar-btn > a {
+        color: white;
+    }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -73,3 +73,29 @@ textarea {
     max-width: 280px;
 }
 
+.botaotd {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #0c8c12;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 99;
+    padding: 0;
+}
+
+    .botaotd:hover,
+    .botaotd:focus {
+        color: #000000;
+        text-decoration: none;
+        cursor: pointer;
+        filter: alpha(opacity=50);
+    }
+
+button.botaotd {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}

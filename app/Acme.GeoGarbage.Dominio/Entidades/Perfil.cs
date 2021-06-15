@@ -7,6 +7,6 @@ namespace Acme.GeoGarbage.Dominio.Entidades
         public int IdPerfil { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public virtual IEnumerable<UsuariosPerfil> UsuariosPerfils { get; set; }
+        public virtual IEnumerable<UsuarioPerfil> UsuariosPerfils { get; set; }
     }
 }

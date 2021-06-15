@@ -1,18 +1,16 @@
+using System.Data.Entity.Migrations;
+using Acme.GeoGarbage.Repositorio.Contexto;
+
 namespace Acme.GeoGarbage.Repositorio.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<Acme.GeoGarbage.Repositorio.Contexto.ProjetoAmbientalContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<GeoGarbageContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Acme.GeoGarbage.Repositorio.Contexto.ProjetoAmbientalContext context)
+        protected override void Seed(GeoGarbageContext context)
         {
             //  This method will be called after migrating to the latest version.
 

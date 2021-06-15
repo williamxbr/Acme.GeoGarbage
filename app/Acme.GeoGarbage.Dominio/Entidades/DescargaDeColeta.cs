@@ -1,14 +1,17 @@
 ﻿using System;
-
+using SQLite;
 namespace Acme.GeoGarbage.Dominio.Entidades
 {
     public class DescargaDeColeta
     {
-        public Guid IdDescargaDeColetas { get; set; }
-        public Guid IdSetorJornada { get; set; }
+        [PrimaryKey]
+        public Guid IdDescargaDeColeta { get; set; }
         public Guid IdDescargaAterro { get; set; }
+        public Guid IdSetorJornada { get; set; }
         public double PesoEstimadoDescarregado { get; set; }
-        public virtual SetoresDaJornada SetoresDaJornada { get; set; }
+        [Ignore]
+        public virtual SetorDaJornada SetorDaJornada { get; set; }
+        [Ignore]
         public virtual DescargaAterro DescargaAterro { get; set; }
 
     }

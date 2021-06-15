@@ -11,6 +11,10 @@
     <AssemblyName>Acme.GeoGarbage.Repositorio</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,22 +42,43 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigEntidades\ClienteAcessoTraffilogConfig.cs" />
     <Compile Include="ConfigEntidades\ConstrutorCampoConfig.cs" />
     <Compile Include="ConfigEntidades\ConstrutorChaveEstrangeiraConfig.cs" />
     <Compile Include="ConfigEntidades\ConstrutorTabelaConfig.cs" />
     <Compile Include="ConfigEntidades\ClienteConfig.cs" />
     <Compile Include="ConfigEntidades\ConfiguracaoAppConfig.cs" />
+    <Compile Include="ConfigEntidades\ConsultaDinamicaAssociacaoConfig.cs" />
     <Compile Include="ConfigEntidades\ConsultaDinamicaCampoConfig.cs" />
     <Compile Include="ConfigEntidades\ConsultaDinamicaCondicaoConfig.cs" />
     <Compile Include="ConfigEntidades\ConsultaDinamicaConfig.cs" />
@@ -63,26 +88,58 @@
     <Compile Include="ConfigEntidades\DescargaDeColetaConfig.cs" />
     <Compile Include="ConfigEntidades\DeviceConfig.cs" />
     <Compile Include="ConfigEntidades\DeviceInstaladoConfig.cs" />
+    <Compile Include="ConfigEntidades\ExecucaoPontoDeColetaConfig.cs" />
     <Compile Include="ConfigEntidades\GaragemConfig.cs" />
     <Compile Include="ConfigEntidades\InterrupcaoConfig.cs" />
     <Compile Include="ConfigEntidades\JornadaConfig.cs" />
-    <Compile Include="ConfigEntidades\MotivosInterrupcaoConfig.cs" />
+    <Compile Include="ConfigEntidades\LastMileageEngineConfig.cs" />
+    <Compile Include="ConfigEntidades\LocalizacaoTraffilogConfig.cs" />
+    <Compile Include="ConfigEntidades\MotivoInterrupcaoConfig.cs" />
+    <Compile Include="ConfigEntidades\PadraoDaContaConfig.cs" />
     <Compile Include="ConfigEntidades\PerfilConfig.cs" />
-    <Compile Include="ConfigEntidades\RecursosDaJornadaConfig.cs" />
-    <Compile Include="ConfigEntidades\RecursosDeColetaConfig.cs" />
+    <Compile Include="ConfigEntidades\PontoDeColetaConfig.cs" />
+    <Compile Include="ConfigEntidades\RecursoDaJornadaConfig.cs" />
+    <Compile Include="ConfigEntidades\RecursoDeColetaConfig.cs" />
     <Compile Include="ConfigEntidades\RetornoParaCompletarColetaConfig.cs" />
     <Compile Include="ConfigEntidades\RetornoParaGaragemConfig.cs" />
     <Compile Include="ConfigEntidades\RotaRealizadaConfig.cs" />
     <Compile Include="ConfigEntidades\SelecaoDeNovoSetorConfig.cs" />
     <Compile Include="ConfigEntidades\SetorConfig.cs" />
-    <Compile Include="ConfigEntidades\SetoresDaJornadaConfig.cs" />
+    <Compile Include="ConfigEntidades\SetorDaJornadaConfig.cs" />
+    <Compile Include="ConfigEntidades\TokenConfig.cs" />
     <Compile Include="ConfigEntidades\UsuarioConfig.cs" />
-    <Compile Include="ConfigEntidades\UsuariosDeClienteConfig.cs" />
-    <Compile Include="ConfigEntidades\UsuariosPerfilConfig.cs" />
+    <Compile Include="ConfigEntidades\UsuarioDeClienteConfig.cs" />
+    <Compile Include="ConfigEntidades\UsuarioPerfilConfig.cs" />
+    <Compile Include="ConfigEntidades\VeiculoAPITraffilogConfig.cs" />
     <Compile Include="ConfigEntidades\VeiculoConfig.cs" />
-    <Compile Include="Contexto\ProjetoAmbientalContext.cs" />
+    <Compile Include="ConfigEntidades\ViagemTraffilogConfig.cs" />
+    <Compile Include="Contexto\GeoGarbageContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\ClienteAcessoTraffilogRepositorio.cs" />
+    <Compile Include="Repositorios\ConsultaDinamicaAssociacaoRepositorio.cs" />
+    <Compile Include="Repositorios\DescargaAterroRepositorio.cs" />
+    <Compile Include="Repositorios\DescargaDeColetaRepositorio.cs" />
+    <Compile Include="Repositorios\DeviceInstaladoRepositorio.cs" />
+    <Compile Include="Repositorios\DeviceRepositorio.cs" />
+    <Compile Include="Repositorios\ExecucaoPontoDeColetaRepositorio.cs" />
+    <Compile Include="Repositorios\InterrupcaoRepositorio.cs" />
+    <Compile Include="Repositorios\JornadaRepositorio.cs" />
+    <Compile Include="Repositorios\LastMileageEngineRepositorio.cs" />
+    <Compile Include="Repositorios\LocalizacaoTraffilogRepositorio.cs" />
+    <Compile Include="Repositorios\PadraoDaContaRepositorio.cs" />
+    <Compile Include="Repositorios\PerfilRepositorio.cs" />
+    <Compile Include="Repositorios\PontoDeColetaRepositorio.cs" />
+    <Compile Include="Repositorios\RepositorioConsulta.cs" />
+    <Compile Include="Repositorios\RecursoDaJornadaRepositorio.cs" />
+    <Compile Include="Repositorios\RetornoParaCompletarColetaRepositorio.cs" />
+    <Compile Include="Repositorios\RetornoParaGaragemRepositorio.cs" />
+    <Compile Include="Repositorios\RotaRealizadaRepositorio.cs" />
+    <Compile Include="Repositorios\SelecaoDeNovoSetorRepositorio.cs" />
+    <Compile Include="Repositorios\SetorDaJornadaRepositorio.cs" />
+    <Compile Include="Repositorios\SetorRepositorio.cs" />
+    <Compile Include="Repositorios\MotivoInterrupcaoRepositorio.cs" />
+    <Compile Include="Repositorios\ClienteRepositorio.cs" />
     <Compile Include="Repositorios\ConstrutorChaveEstrangeiraRepositorio.cs" />
     <Compile Include="Repositorios\ConstrutorTabelaRepositorio.cs" />
     <Compile Include="Repositorios\ConstrutorCampoRepositorio.cs" />
@@ -91,18 +148,27 @@
     <Compile Include="Repositorios\ConsultaDinamicaRepositorio.cs" />
     <Compile Include="Repositorios\ConsultaDinamicaTabelaRepositorio.cs" />
     <Compile Include="Repositorios\ConsultaPastaRepositorio.cs" />
+    <Compile Include="Repositorios\ConfiguracaoAppRepositorio.cs" />
+    <Compile Include="Repositorios\RecursoDeColetaRepositorio.cs" />
+    <Compile Include="Repositorios\GaragemRepositorio.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
+    <Compile Include="Repositorios\TokenRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioDeClienteRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioPerfilRepositorio.cs" />
+    <Compile Include="Repositorios\VeiculoAPITraffilogRepositorio.cs" />
+    <Compile Include="Repositorios\VeiculoRepositorio.cs" />
+    <Compile Include="Repositorios\ViagemTraffilogRepositorio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acme.GeoGarbage.Dominio\Acme.GeoGarbage.Dominio.csproj">
       <Project>{28b665bd-a534-4be3-bf60-2aa05428f984}</Project>
       <Name>Acme.GeoGarbage.Dominio</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

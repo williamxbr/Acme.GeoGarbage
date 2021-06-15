@@ -1,0 +1,22 @@
+﻿<div class="row-fluid" style="padding: 10px">
+    <div class="container-fluid">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#TabAdmin1" data-toggle="tab"><b>USUARIOS</b></a>
+            </li>
+            <li>
+                <a href="#TabAdmin2" data-toggle="tab"><b>DEVICES</b></a>
+            </li>
+        </ul>
+        <hr />
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="TabAdmin1">
+                @*@Html.Action("IndexPartial","Usuario", new { Area = "Admin"});*@
+            </div>
+            <div class="tab-pane" id="TabAdmin2">
+                @*@Html.Partial("~/Areas/Relatorio/Views/Consulta/IndexPartial.cshtml")*@
+            </div>
+        </div>
+    </div>
+
+</div>

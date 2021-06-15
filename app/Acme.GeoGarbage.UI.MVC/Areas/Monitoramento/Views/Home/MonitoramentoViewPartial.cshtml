@@ -1,0 +1,364 @@
+﻿<div class="jumbotron tela-monitoramento">
+    <h1>Monitoramento</h1>
+    <div>
+        <table class="table controle-online-table">
+            <thead>
+                <tr>
+                    <th style="display:none">IDSetor</th>
+                    <th width="10%">SETOR</th>
+                    <th width="10%">STATUS</th>
+                    <th width="10%">HORÁRIO</th>
+                    <th width="50%">SERVIÇO EM EXECUÇÃO</th>
+                    <th width="5%">%</th>
+                    <th width="5%">PING</th>
+                    <th width="10%">AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal Criar Pasta -->
+<div class="modal fade in" id="myModalDetalhes" tabindex="-1" role="dialog">
+    <div class="modal-dialog-xs" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Detalhes do Setor</h4>
+            </div>
+            <div id="detalhes" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Criar Pasta -->
+@*<div class="modal fade in" id="myModalMapa" tabindex="-1" role="dialog">
+    <div class="modal-dialog-xs" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabelMapa">Mapa</h4>
+            </div>
+            <div id="map" class="modal-body" style="height: 800px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+
+<script>
+
+    function coletarInformacoesSetores() {
+
+        if ($('#TabMonitoramento').hasClass('tab-pane active')) {
+
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("ListarSetoresEmMonitoramento", "MonitoramentoOnline")",
+            success: function (data) {
+                $(".controle-online-table").css("display", "");
+                $(".div-sem-setor").css("display", "none");
+                $(".controle-online-table tbody tr").remove();
+
+                if (data.length != 0) {
+
+                    //                 var linha = $("<tr/>");
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        var linha = $("<tr/>"); //William - 24/04/2017 - Estava criando uma linha para o loop
+
+                        var setor = data[i];
+
+                        var colunaIdSetor = $("<td style='display:none;' />");
+                        colunaIdSetor.text(setor.IdSetor);
+
+                        var colunaSetor = $("<td/>");
+                        colunaSetor.text(setor.Setor);
+
+                        var colunaStatus = $("<td/>");
+                        colunaStatus.text(setor.Status);
+
+                        var colunaHorario = $("<td/>");
+
+                        if (setor.Horario != 0) {
+                            var corHorario = pegarCorHorario(setor.Horario);
+                            var horarioCirculo = geometricForms.drawCircle(corHorario);
+                            horarioCirculo.css("margin-left", "35%");
+                            colunaHorario.append(horarioCirculo);
+                        }
+
+                        var colunaServicoEmExecucao = $("<td/>");
+                        var div = $("<div style='width:100%; height:20px;'/>");
+
+                        setorBar.element = div;
+                        setorBar.source = setor.ServicoEmExecucao;
+                        setorBar.draw();
+
+                        colunaServicoEmExecucao.append(setorBar.element);
+
+                        var colunaPercentual = $("<td/>");
+                        var badge = $("<span/>");
+                        badge.addClass("badge");
+                        badge.text(setor.PorcentagemDeConclusao)
+                        colunaPercentual.html(badge);
+
+                        var colunaPing = $("<td/>");
+                        var corPing = pegarCorPing(setor.Ping);
+                        var pingCirculo = geometricForms.drawCircle(corPing);
+                        pingCirculo.css("margin-left", "35%");
+                        colunaPing.append(pingCirculo);
+
+                        var colunaAcao = $("<td/>");
+
+                        var buttonDetalhes = $("<button/>");
+                        buttonDetalhes.attr("type", "button");
+                        buttonDetalhes.addClass("btn btn-success btn-sm");
+                        buttonDetalhes.html('<span class="glyphicon glyphicon-th" aria-hidden="true"></span>');
+                        buttonDetalhes.attr("onclick","mostrarDetalhes(this.parentNode.parentNode)");
+                        colunaAcao.append(buttonDetalhes);
+
+                        //var buttonMapa = $("<button/>");
+                        //buttonMapa.attr("type", "button");
+                        //buttonMapa.addClass("btn btn-info btn-sm");
+                        //buttonMapa.html('<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>');
+                        //buttonMapa.attr("onclick", "mapaModal()");
+                        //colunaAcao.append(buttonMapa);
+
+
+                        linha.append(colunaIdSetor);
+                        linha.append(colunaSetor);
+                        linha.append(colunaStatus);
+                        linha.append(colunaHorario);
+                        linha.append(colunaServicoEmExecucao);
+                        linha.append(colunaPercentual);
+                        linha.append(colunaPing);
+                        linha.append(colunaAcao);
+
+
+                        $(".controle-online-table tbody").append(linha);
+                    }
+                } else {
+                    $(".controle-online-table").css("display", "none");
+                    var divSemSetor = $("<div/>");
+                    divSemSetor.addClass("div-sem-setor");
+                    divSemSetor.text("Nenhum setor com serviço em operação.");
+                    $(".tela-monitoramento").append(divSemSetor);
+                }
+            },
+            error: function (data) {
+                //bootbox.alert("Ocorreu um erro durante o processamento!");
+                var horario = new Date();
+                var log = $('#logerror');
+                log.append(horario.toLocaleString('pt-br') +  ' coletarInformacoesSetores :' + data);
+            }
+        });
+
+
+        }
+
+    }
+
+
+    function mostrarDetalhes(elemento) {
+        var linha = $(elemento);
+        var idSetor = linha.find("td:first").text();
+
+        $.ajax({
+            method: 'POST',
+            url: "@Url.Action("Detalhes", "MonitoramentoOnline")",
+            data: { setor: idSetor },
+            success: function (data) {
+                $("#detalhes").html(data);
+                $('#myModalDetalhes').modal('show');
+                //$(".tela-monitoramento").html(data);
+            },
+            error: function (data) {
+                //bootbox.alert("Ocorreu um erro durante o processamento!");
+                var horario = new Date();
+                var log = $('#logerror');
+                log.append(horario.toLocaleString('pt-br') + ' dblclick Detalhes :' + data);
+            }
+        });
+    }
+
+    //function mapaModal() {
+    //    var locations = [
+    //        ['2004 54',-21.178,-47.7719,'54','number_black.png','white'],
+    //        ['2004 59',-21.181,-47.7741,'59','number_black.png','white'],
+    //        ['2004 77',-21.1792,-47.7723,'77','number_black.png','white'],
+    //        ['2004 91',-21.1784,-47.7697,'91','number_black.png','white'],
+    //        ['2004 3',-21.1667,-47.7867,'3','number_green.png','black'],
+    //        ['2004 2',-21.1678,-47.7844,'2','number_yellow.png','black'],
+    //        ['2004 1',-21.1652,-47.7873,'1','number_yellow.png','black'],
+    //        ['2004 4',-21.1643,-47.79,'4','number_green.png','black'],
+    //        ['2004 5',-21.169,-47.787,'5','number_green.png','black'],
+    //        ['2004 6',-21.1694,-47.781,'6','number_green.png','black'],
+    //        ['2004 7',-21.1718,-47.7844,'7','number_green.png','black'],
+    //        ['2004 8',-21.1723,-47.7822,'8','number_green.png','black'],
+    //        ['2004 9',-21.1731,-47.781,'9','number_green.png','black'],
+    //        ['2004 10',-21.1768,-47.7781,'10','number_green.png','black'],
+    //        ['2004 15',-21.1772,-47.7781,'15','number_green.png','black'],
+    //        ['2004 11',-21.1774,-47.7777,'11','number_yellow.png','black'],
+    //        ['2004 16',-21.1779,-47.7777,'16','number_green.png','black'],
+    //        ['2004 28',-21.178,-47.7772,'28','number_green.png','black'],
+    //        ['2004 12',-21.1774,-47.7769,'12','number_yellow.png','black'],
+    //        ['2004 47',-21.1776,-47.7764,'47','number_green.png','black'],
+    //        ['2004 13',-21.1769,-47.7768,'13','number_yellow.png','black'],
+    //        ['2004 14',-21.1768,-47.7775,'14','number_green.png','black'],
+    //        ['2004 17',-21.1784,-47.778,'17','number_green.png','black'],
+    //        ['2004 18',-21.1793,-47.7772,'18','number_green.png','black'],
+    //        ['2004 38',-21.179,-47.7768,'38','number_green.png','black'],
+    //        ['2004 19',-21.1799,-47.7766,'19','number_yellow.png','black'],
+    //        ['2004 20',-21.1805,-47.7761,'20','number_green.png','black'],
+    //        ['2004 26',-21.1805,-47.7756,'26','number_green.png','black'],
+    //        ['2004 21',-21.1816,-47.7752,'21','number_yellow.png','black'],
+    //        ['2004 22',-21.1825,-47.7737,'22','number_green.png','black'],
+    //        ['2004 25',-21.1828,-47.7729,'25','number_green.png','black'],
+    //        ['2004 23',-21.1831,-47.7716,'23','number_yellow.png','black'],
+    //        ['2004 24',-21.1829,-47.7722,'24','number_green.png','black'],
+    //        ['2004 60',-21.1818,-47.7736,'60','number_green.png','black'],
+    //        ['2004 89',-21.1807,-47.7749,'89','number_green.png','black'],
+    //        ['2004 56',-21.18,-47.7753,'56','number_yellow.png','black'],
+    //        ['2004 27',-21.1793,-47.7764,'27','number_yellow.png','black'],
+    //        ['2004 57',-21.1794,-47.7758,'57','number_green.png','black'],
+    //        ['2004 37',-21.1785,-47.7772,'37','number_yellow.png','black'],
+    //        ['2004 29',-21.1766,-47.7755,'29','number_yellow.png','black'],
+    //        ['2004 81',-21.1772,-47.7756,'81','number_green.png','black'],
+    //        ['2004 69',-21.1762,-47.7737,'69','number_yellow.png','black'],
+    //        ['2004 30',-21.1755,-47.7735,'30','number_yellow.png','black'],
+    //        ['2004 70',-21.1749,-47.7733,'70','number_green.png','black'],
+    //        ['2004 32',-21.175,-47.7718,'32','number_yellow.png','black'],
+    //        ['2004 31',-21.1743,-47.7715,'31','number_yellow.png','black'],
+    //        ['2004 114',-21.1739,-47.7705,'114','number_green.png','black'],
+    //        ['2004 42',-21.1756,-47.7715,'42','number_yellow.png','black'],
+    //        ['2004 33',-21.1748,-47.7709,'33','number_yellow.png','black'],
+    //        ['2004 34',-21.1756,-47.7721,'34','number_green.png','black'],
+    //        ['2004 71',-21.1761,-47.7724,'71','number_green.png','black'],
+    //        ['2004 35',-21.1767,-47.774,'35','number_yellow.png','black'],
+    //        ['2004 79',-21.1772,-47.7743,'79','number_green.png','black'],
+    //        ['2004 36',-21.1777,-47.7758,'36','number_yellow.png','black'],
+    //        ['2004 39',-21.1787,-47.7762,'39','number_green.png','black'],
+    //        ['2004 48',-21.1788,-47.7756,'48','number_green.png','black'],
+    //        ['2004 40',-21.1778,-47.7746,'40','number_yellow.png','black'],
+    //        ['2004 41',-21.1767,-47.7727,'41','number_green.png','black'],
+    //        ['2004 68',-21.1773,-47.773,'68','number_green.png','black'],
+    //        ['2004 93',-21.1762,-47.7711,'93','number_green.png','black'],
+    //        ['2004 43',-21.1743,-47.7724,'43','number_yellow.png','black'],
+    //        ['2004 44',-21.1735,-47.7716,'44','number_green.png','black'],
+    //        ['2004 45',-21.1748,-47.774,'45','number_green.png','black'],
+    //        ['2004 80',-21.176,-47.7751,'80','number_green.png','black'],
+    //        ['2004 46',-21.1759,-47.7758,'46','number_yellow.png','black'],
+    //        ['2004 49',-21.1789,-47.7749,'49','number_green.png','black'],
+    //        ['2004 58',-21.1795,-47.7751,'58','number_green.png','black'],
+    //        ['2004 78',-21.1785,-47.7735,'78','number_green.png','black'],
+    //        ['2004 50',-21.1779,-47.7732,'50','number_yellow.png','black'],
+    //        ['2004 72',-21.1773,-47.7716,'72','number_green.png','black'],
+    //        ['2004 51',-21.1768,-47.7713,'51','number_yellow.png','black'],
+    //        ['2004 52',-21.1762,-47.7704,'52','number_green.png','black'],
+    //        ['2004 92',-21.1775,-47.7702,'92','number_green.png','black'],
+    //        ['2004 53',-21.1769,-47.77,'53','number_yellow.png','black'],
+    //        ['2004 67',-21.1786,-47.7721,'67','number_green.png','black'],
+    //        ['2004 90',-21.1785,-47.7728,'90','number_green.png','black'],
+    //        ['2004 55',-21.1791,-47.7737,'55','number_yellow.png','black'],
+    //        ['2004 83',-21.1795,-47.7739,'83','number_green.png','black'],
+    //        ['2004 82',-21.1783,-47.7748,'82','number_yellow.png','black'],
+    //        ['2004 87',-21.1801,-47.7725,'87','number_green.png','black'],
+    //        ['2004 86',-21.1811,-47.7718,'86','number_yellow.png','black'],
+    //        ['2004 85',-21.182,-47.7715,'85','number_yellow.png','black'],
+    //        ['2004 84',-21.1817,-47.7725,'84','number_yellow.png','black'],
+    //        ['2004 88',-21.1798,-47.7733,'88','number_green.png','black'],
+    //        ['2004 65',-21.1782,-47.7705,'65','number_yellow.png','black'],
+    //        ['2004 73',-21.1789,-47.7706,'73','number_green.png','black'],
+    //        ['2004 63',-21.1798,-47.7701,'63','number_yellow.png','black'],
+    //        ['2004 74',-21.1797,-47.7707,'74','number_green.png','black'],
+    //        ['2004 62',-21.1803,-47.7717,'62','number_yellow.png','black'],
+    //        ['2004 61',-21.1812,-47.7733,'61','number_yellow.png','black'],
+    //        ['2004 64',-21.1791,-47.7697,'64','number_green.png','black'],
+    //        ['2004 75',-21.1811,-47.7705,'75','number_green.png','black'],
+    //        ['2004 76',-21.1794,-47.7716,'76','number_green.png','black'],
+    //        ['2004 66',-21.1787,-47.7715,'66','number_yellow.png','black'],
+    //        ['2004 94',-21.1755,-47.7707,'94','number_green.png','black'],
+    //        ['2004 113',-21.173,-47.7687,'113','number_green.png','black'],
+    //        ['2004 112',-21.1723,-47.7644,'112','number_yellow.png','black'],
+    //        ['2004 110',-21.1728,-47.7617,'110','number_yellow.png','black'],
+    //        ['2004 109',-21.1726,-47.7627,'109','number_yellow.png','black'],
+    //        ['2004 111',-21.1729,-47.7624,'111','number_green.png','black'],
+    //        ['2004 108',-21.1737,-47.7678,'108','number_yellow.png','black'],
+    //        ['2004 107',-21.1738,-47.7696,'107','number_yellow.png','black'],
+    //        ['2004 106',-21.174,-47.7667,'106','number_yellow.png','black'],
+    //        ['2004 105',-21.1736,-47.7625,'105','number_yellow.png','black'],
+    //        ['2004 97',-21.175,-47.7622,'97','number_yellow.png','black'],
+    //        ['2004 104',-21.1746,-47.7623,'104','number_green.png','black'],
+    //        ['2004 96',-21.1757,-47.7667,'96','number_yellow.png','black'],
+    //        ['2004 95',-21.1757,-47.7692,'95','number_yellow.png','black'],
+    //        ['2004 103',-21.1748,-47.7679,'103','number_green.png','black'],
+    //        ['2004 102',-21.1747,-47.7644,'102','number_yellow.png','black'],
+    //        ['2004 101',-21.1758,-47.7638,'101','number_yellow.png','black'],
+    //        ['2004 100',-21.1769,-47.7634,'100','number_yellow.png','black'],
+    //        ['2004 99',-21.1773,-47.7655,'99','number_yellow.png','black'],
+    //        ['2004 98',-21.1765,-47.7646,'98','number_yellow.png','black'],
+    //    ];
+
+    //    var map = new google.maps.Map(document.getElementById('map'), {
+    //        zoom: 16,
+    //        center: new google.maps.LatLng(locations[0][1],locations[0][2]),
+    //        mapTypeId: google.maps.MapTypeId.ROADMAP
+    //    });
+
+    //    var infowindow = new google.maps.InfoWindow();
+
+    //    var marker, i;
+
+    //    for (i = 0; i < locations.length; i++) {  
+    //        marker = new google.maps.Marker({
+    //            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+    //            map: map,
+    //            label: {text:locations[i][3],color:locations[i][5]},
+    //            icon : locations[i][4]
+    //        });
+	  
+
+    //        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //            return function() {
+    //                infowindow.setContent(locations[i][0]);
+    //                infowindow.open(map, marker);
+    //            }
+    //        })(marker, i));
+    //    }
+
+    //    $('#myModalMapa').modal('show');
+        
+    //}
+
+
+    $(document).ready(function () {
+
+        $(document).on("dblclick", ".controle-online-table tbody tr", function (event) {
+            mostrarDetalhes(this);
+        });
+
+
+        if (localStorage["abrir-segunda-aba"] === "true") {
+            $('#linkAbaMonitoramento').tab('show');
+            localStorage["abrir-segunda-aba"] = false;
+        }
+        coletarInformacoesSetores();
+        setInterval(coletarInformacoesSetores, $TEMPO_VERIFICACAO);
+
+    });
+
+
+</script>

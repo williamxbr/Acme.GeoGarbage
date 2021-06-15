@@ -1,0 +1,1836 @@
+﻿<div class="row-fluid" style="padding: 10px">
+    <div class="container-fluid">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#TabConstrutorTabelas" data-toggle="tab"><b>TABELAS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorCampos" data-toggle="tab"><b>CAMPOS</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorFuncoes" data-toggle="tab"><b>FUNÇÕES</b></a>
+            </li>
+            <li>
+                <a href="#TabConstrutorFiltros" data-toggle="tab"><b>FILTROS</b></a>
+            </li>
+            @*<li>
+                    <a href="#TabConstrutorCalculos" data-toggle="tab"><b>CALCULOS</b></a>
+                </li>*@
+            <li>
+                <a href="#TabConstrutorPosicao" data-toggle="tab"><b>ORDENAÇÃO</b></a>
+            </li>
+            @*<li id="linkAbaConstrutorPreview">
+                <a href="#TabConstrutorPreview" data-toggle="tab"><b>PREVIEW</b></a>
+            </li>*@
+            <li>
+                <a href="#TabConstrutorArquivamento" data-toggle="tab"><b>ARQUIVAMENTO</b></a>
+            </li>
+        </ul>
+        <hr />
+        <div class="tab-content clearfix">
+            <!-- Tabelas -->
+            <div class="tab-pane active" id="TabConstrutorTabelas" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Tabelas Disponiveis
+                    </div>
+                    <div class="panel-body">
+                        <table id="tabelasdisponiveis" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tabela</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="checkbox" style="display: inline;float: right">
+                        <input type="checkbox" id="ckDistinct" />Distinto
+                    </div>
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <ul id="tabelasselecionadas"></ul>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Relacionamentos</div>
+                    <div class="panel-body">
+                        <div id="listaRelacionamento"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Campos -->
+            <div class="tab-pane" id="TabConstrutorCampos" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Funções -->
+            <div class="tab-pane" id="TabConstrutorFuncoes" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_funcoes" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_funcoes" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                    <th>Função</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Filtros -->
+            <div class="tab-pane" id="TabConstrutorFiltros" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_filtro" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campos no SQL</th>
+                                    <th>Tabela</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_filtro" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Campo</th>
+                                    <th>Operador</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Calculos -->
+            <div class="tab-pane" id="TabConstrutorCalculos">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <div class="row-fluid">
+                            <div class="col-md-4">
+                                <table id="camposdisponiveis_calculo" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Campos</th>
+                                            <th>Add</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-1">
+                                <div>
+                                    <button type="button" id="botao_mais" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" id="botao_menos" class="btn btn-primary"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" id="botao_mult" class="btn btn-success"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" id="botao_div" class="btn btn-info"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <form id="form_add_fieldCalc">
+                                    <div class="form-group">
+                                        <label>Nome do Campo</label>
+                                        <input type="text" id="apelido" class="form-control" style="max-width: 100%;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Expressão</label>
+                                        <pre id="campo_calculo"></pre>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tipo</label>
+                                        <select class="form-control">
+                                            <option value="texto">texto</option>
+                                            <option value="numero">numero</option>
+                                            <option value="date">data</option>
+                                            <option value="time">hora</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Adiciona</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_calculo" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Campo</th>
+                                    <th>Expressão</th>
+                                    <th>Tipo</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Posição -->
+            <div class="tab-pane" id="TabConstrutorPosicao" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Campos Disponiveis</div>
+                    <div class="panel-body">
+                        <table id="camposdisponiveis_posicao" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campos no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tabelas Selecionadas</div>
+                    <div class="panel-body">
+                        <table id="camposselecionados_posicao" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Apelido do Campo</th>
+                                    <th>Campo no SQL</th>
+                                    <th>Tabela</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Preview -->
+            <div class="tab-pane" id="TabConstrutorPreview" style="padding-bottom: 2%">
+                <form id="executesql-form">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Visualizador</div>
+                        <div class="panel-body">
+                            <pre id="text_sql"></pre>
+                        </div>
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-success" id="btnExecutarPreview">Executar</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Resultado</div>
+                    <div class="panel-body">
+                        <div id="result"></div>
+                        <div id="jsGrid"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Arquivamento -->
+            <div class="tab-pane" id="TabConstrutorArquivamento" style="padding-bottom: 2%">
+                <div class="panel panel-default">
+                    <form id="saveQuery-form">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Escolha uma pasta</div>
+                            <div class="panel-body">
+                                <ul id="listaPastasPreview" class="list-group"></ul>
+                            </div>
+                        </div>
+                        <label for="nomeconsulta">Nome da consulta</label>
+                        <input type="text" class="form-control" id="nomeconsulta" required>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalCreateFolder">Criar Pasta</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="reset" class="btn btn-danger">Limpar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Criar Pasta -->
+<div class="modal fade" id="myModalCreateFolder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Criar Pasta</h4>
+            </div>
+            <form id="createfolder-form" method="post">
+                <div class="modal-body">
+                    <input type="text" id="folder" class="form-control" />
+                    <p id="msg"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var tabelas = [];
+    var campos = [];
+    var funcoes = [];
+    var filtros = [];
+    var grupos = [];
+    var posicoes = [];
+
+    var condicoes = [];
+    var groupby = [];
+    var orderby = [];
+
+    var lista = [];
+    var listaPreview = [];
+
+    var pasta = "";
+
+    var distinct = false;
+
+    var idConsultaDinamicaConstrutor = null;
+
+    function alteraCorlistaPasta(id) {
+        var listali = $("#listaPastasPreview li");
+
+        for (var index = 0; index < listali.length; ++index) {
+            var linha = listali[index].id;
+            if (linha === id) {
+                var listitemactiva = document.getElementById(id);
+                listitemactiva.style.backgroundColor = "#dddddd";
+                pasta = id.replace("pastaPreview", "");
+            } else {
+                var listiteminativa = document.getElementById(linha);
+                listiteminativa.style.backgroundColor = "#ffffff";
+            }
+        }
+    }
+
+    $('#ckDistinct').change(function () {
+        distinct = $(this).prop('checked');
+    });
+
+    $('botao_mais').click(function () {
+        $('#campo_calculo').append(' + ');
+    });
+
+    $('botao_menos').click(function () {
+        $('#campo_calculo').append(' + ');
+    });
+
+    $('botao_mult').click(function () {
+        $('#campo_calculo').append(' * ');
+    });
+
+    $('botao_div').click(function () {
+        $('#campo_calculo').append(' * ');
+    });
+
+    $('#saveQuery-form').on('reset', function(e) {
+        e.preventDefault();
+        bootbox.confirm("Tem certeza que deseja limpar o construtor de relatório?", function(resposta) {
+            if (resposta) {
+                var dialog = bootbox.dialog({
+                    message: '<p class="text-center">Por favor aguarde enquanto carrega a consulta...</p>',
+                    closeButton: false
+                });
+                limpaCampos();
+                dialog.modal('hide');
+            }
+        });
+    });
+
+    $('#saveQuery-form')
+        .on('submit', function (e) {
+            e.preventDefault();
+
+            if (!pasta) {
+                bootbox.alert("Favor escolher uma pasta");
+                return null;
+            }
+
+            var nomeconsulta = this.nomeconsulta.value;
+            var indice;
+            var camposwithalias = [];
+            for (indice = 0; indice < campos.length; indice++) {
+                camposwithalias.push(campos[indice] + '&' + $("#apelidocampo" + campos[indice]).html());
+            }
+            var funcoeswithalias = [];
+            for (indice = 0; indice < funcoes.length; indice++) {
+                if (funcoes[indice].split('&').length < 2) {
+                    bootbox.alert("Por favor, efetive a função ou cancele!");
+                    return null;
+                }
+                funcoeswithalias.push(funcoes[indice] + '&' + $("#apelidofuncao" + funcoes[indice].split('&')[0]).html());
+            }
+
+            for (indice = 0; indice < filtros.length; indice++) {
+                if (filtros[indice].split('&').length < 2) {
+                    bootbox.alert("Por favor, efetive o filtro ou cancele!");
+                    return null;
+                }
+            }
+
+            var associacoes = [];
+            var joins = $('#listaRelacionamento').children();
+            $.each(joins, function (i, relacionamento) {
+                var idRelacionamento = relacionamento.attributes.id.value.replace('liRelat', '');
+                var associacao = relacionamento.children[1].children[0].value;
+                associacoes.push(idRelacionamento + '&' + associacao);
+            });
+
+            var dialog = bootbox.dialog({
+                title: 'GeoGarbage - Construtor',
+                message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando consulta...</p>'
+            });
+
+            $.ajax({
+                url: '/Relatorio/Consulta/CriarConsultaDinamica',
+                type: 'POST',
+                data: { idConsultaDinamica: idConsultaDinamicaConstrutor, pasta: pasta, nomeconsulta: nomeconsulta, postTabelas: tabelas, postAssociacoes: associacoes, postCampos: camposwithalias, postFuncoes: funcoeswithalias, postFiltros: filtros, postPosicoes: posicoes, distinto: distinct },
+                success: function (msg) {
+
+                    dialog.init(function(){
+                        setTimeout(function () {
+
+                            if (msg.sucesso) {
+                                getPastasPreview();
+                                getPastasConsulta();
+                                dialog.find('.bootbox-body').html(msg.resposta);
+                                limpaCampos();
+                            } else {
+                                dialog.find('.bootbox-body').html(msg.resposta);
+                            }
+
+                        }, 3000);
+                    });
+
+                },
+                error: function (msg) {
+
+                    dialog.init(function(){
+                        setTimeout(function(){
+                            dialog.find('.bootbox-body').html('Erro na construção da consulta');
+                        }, 3000);
+                    });
+
+                }
+            });
+        });
+
+
+    $(function () {
+        $('#createfolder-form').on('submit', function (e) {
+            var folder = $('#folder').val();
+            e.preventDefault();
+            $.ajax({
+                url: '/Relatorio/Consulta/CriarPasta',
+                type: 'POST',
+                data: { pasta: folder },
+                success: function (msg) {
+                    getPastasPreview();
+                    getPastasConsulta();
+                    $('#msg').html(msg);
+                }
+            });
+        });
+    });
+
+    $('#executesql-form')
+        .on('submit', function (e) {
+            e.preventDefault();
+
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center">Por favor aguarde enquanto carrega a consulta...</p>',
+                closeButton: false
+            });
+
+
+            var SQL = $('#text_sql').text();
+
+            var camposgrid = [{}];
+
+            for (var ind = 0; ind < campos.length; ind++) {
+                camposgrid.push({ name: $("#campoiddest" + campos[ind]).find("td").eq(0).html() });
+            }
+
+            var selects = [];
+            selects.push.apply(selects, campos);
+            selects.push.apply(selects, funcoes);
+
+            var titulos = [];
+            for (var campo = 0; campo < campos.length; campo++) {
+                titulos.push($("#apelidocampo" + campos[campo].split('&')[0]).html());
+            }
+
+            for (var funcao = 0; funcao < funcoes.length; funcao++) {
+                titulos.push($("#apelidofuncao" + funcoes[funcao].split('&')[0]).html());
+            }
+
+
+            $.ajax({
+                url: '/Relatorio/Consulta/Resultado',
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: { camposid: selects, SQL: SQL },
+                dataType: "json",
+                success: function (response) {
+
+                    var dados = [];
+                    var colunas = [];
+
+                    var indice = 0;
+
+                    $.each(response[0], function (i, c) {
+                        var atributos = {};
+                        atributos['name'] = i;
+                        atributos['title'] = titulos[indice];
+                        if (typeof (c) == 'number') {
+                            atributos['type'] = 'number';
+                        } else {
+                            atributos['type'] = 'text';
+                        }
+                        colunas.push(atributos);
+                        indice++;
+                    });
+
+
+                    $.each(response, function (index, item) {
+                        var row = {};
+                        $.each(item, function (index, field) {
+
+                            if (field != null && field.hasOwnProperty('TotalMilliseconds')) {
+                                row[index] = field.TotalMilliseconds === 0 ? '00:00:00' : new Date(field.TotalMilliseconds).toJSON().substr(11, 8);
+                            } else {
+                                if (typeof (field) == 'string' && field.indexOf('/Date') >= 0) {
+                                    row[index] = new Date(parseInt(field.slice(6, 20))).toLocaleString('pt-br');
+                                } else {
+                                    row[index] = field;
+                                }
+                            }
+
+                        });
+                        dados.push(row);
+                    });
+
+
+                    $("#jsGrid").jsGrid({
+                        width: "100%",
+                        height: "400px",
+
+                        paging: true,
+                        //filtering: true,
+                        //autoload: true,
+                        noDataContent: "Dados não encontrados",
+                        pageIndex: 1,
+                        pageSize: 20,
+                        pageButtonCount: 15,
+                        pagerFormat: "Paginas: {first} {prev} {pages} {next} {last}    {pageIndex} de {pageCount}",
+                        pagePrevText: "Anterior",
+                        pageNextText: "Próximo",
+                        pageFirstText: "Primeiro",
+                        pageLastText: "Último",
+                        pageNavigatorNextText: "...",
+                        pageNavigatorPrevText: "...",
+                        loadMessage: "Por favor, aguarde...",
+
+                        data: dados,
+
+                        fields: colunas
+
+                    });
+
+                    dialog.modal('hide');
+
+                },
+                error: function () {
+                    dialog.modal('hide');
+                    bootbox.alert('Erro na consulta');
+                }
+            });
+
+        });
+
+    function getPastasPreview() {
+        var url = "/Relatorio/Consulta/ListaPastas";
+        var listaPastasPreview = $("#listaPastasPreview");
+        $.getJSON(url, "", function (response) {
+            listaPastasPreview.empty();
+            $.each(response, function (index, item) {
+                var li = $('<li/>');
+                li.attr('id', 'pastaPreview' + item.IdConsultaPasta);
+                li.addClass('list-group-item');
+                li.attr('onmousedown', 'alteraCorlistaPasta(this.id)');
+                li.append(item.NomePasta);
+
+                var ul = $('<ul/>');
+
+                for (var i = 0; i < item.ConsultasDinamicas.length; i++) {
+                    var consulta = item.ConsultasDinamicas[i];
+                    var ili = $('<li/>');
+                    ili.attr('id', 'preview' + consulta.IdConsultaDinamica);
+                    ili.append(consulta.NomeConsultaDinamica);
+                    ili.append(' <a onclick="EditarConsulta(this.id)" id="editarConsulta' + consulta.IdConsultaDinamica + '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a onclick="RemoverConsulta(this)" id="removeConsulta' + consulta.IdConsultaDinamica + '"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>');
+                    ul.append(ili);
+                }
+
+                li.append(ul);
+                listaPastasPreview.append(li);
+            });
+        }).fail(function () {
+            bootbox.alert('Erro ao listar as pastas');
+        });
+    }
+
+    function EditarConsulta(id) {
+        bootbox.confirm("Tem certeza que gostaria de editar essa consulta! \r\n Obs.: Essa ação limpará os campos preenchidos no construtor que ainda não foram salvos!", function (result) {
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center">Por favor aguarde enquanto carrega a consulta...</p>',
+                closeButton: false
+            });
+            if (result) {
+                limpaCampos();
+                idConsultaDinamicaConstrutor = id.replace("editarConsulta", "");
+                var nome = $('#preview' + idConsultaDinamicaConstrutor).html().substring(0, $('#preview' + idConsultaDinamicaConstrutor).html().indexOf(' <'));
+                $('#nomeconsulta').val(nome);
+                $('#nomeconsulta').attr('disabled', '');
+                $('#botaoSalvarComo').removeAttr('disabled');
+                $.get("/Relatorio/Consulta/EditarConsultaDinamica", { idConsultaDinamicaConstrutor }, function (consultaDinamica) {
+
+                    $.each(consultaDinamica.tabelas,
+                        function (index, item) {
+                            var elemento =
+                                document.getElementById('tabelaid' +
+                                    item
+                                        .IdConstrutorTabela); //$("#tabelaid" + item.IdConstrutorTabela);
+                            AdicionaTabela(item.IdConstrutorTabela, elemento);
+                        });
+
+                    getRelacionamentos();
+
+                    setTimeout(function () {
+                        $.each(consultaDinamica.relacionamentos,
+                            function (index, item) {
+                                var option =
+                                    $('#liRelat' +
+                                        item.IdConstrutorChaveEstrangeira +
+                                        ' div select option')[item.TipoAssociacao];
+                                option.selected = 'true';
+                            });
+                    }, 3000);
+
+                    getCampos();
+
+                    setTimeout(function () {
+                        $.each(consultaDinamica.campos, function (index, item) {
+                            if (item.TipoAgregacao === 0 && item.Apresentacao > -1) {
+                                var campo = $('#campoid' + item.IdConstrutorCampo)[0];
+                                AdicionaCampo(item.IdConstrutorCampo, campo, item.ApelidoCampo);
+                            }
+                            if (item.TipoAgregacao > 0) {
+                                var funcao = $('#campofuncoesid' + item.IdConstrutorCampo)[0];
+                                AdicionaFuncao(item.IdConstrutorCampo, funcao);
+                                $('#campofuncoesiddest' + item.IdConstrutorCampo+' td select option')[item.TipoAgregacao].selected = true;
+                                $('#campofuncoesiddest' + item.IdConstrutorCampo + ' td select').change();
+                            }
+                            if (item.Ordenacao > -1) {
+                                var posicao = $('#campoposicaoid' + item.IdConstrutorCampo)[0];
+                                AdicionaPosicao(item.IdConstrutorCampo, posicao);
+                            }
+                        });
+                        $.each(consultaDinamica.condicoes, function (index, item) {
+                            var condicao = $('#campofiltrosid' + item.IdConstrutorCampo)[0];
+                            AdicionaFiltro(item.IdConstrutorCampo, condicao, item.TipoDados);
+                            $('#select_operador_' + index + ' option')[item.Operador].selected = true;
+                            $('#input_valor_' + index).val(item.Valor);
+                            $('#campofiltrosiddest' + item.IdConstrutorCampo + ' td button').click();
+                        });
+                    }, 3000);
+                    dialog.modal('hide');
+                });
+            }
+        });
+    }
+
+    function RemoverConsulta(elemento) {
+        bootbox.confirm("Tem certeza que gostaria de deletar a consulta ? ", function (result) {
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center">Por favor aguarde enquanto remove a consulta...</p>',
+                closeButton: false
+            });
+            if (result) {
+                var idConsultaDinamicaRemove = elemento.id.replace("removeConsulta", "");
+                $.post("/Relatorio/Consulta/DeletarConsultaDinamica", { idConsultaDinamica: idConsultaDinamicaRemove }, function (result) {
+                    if (result) {
+                        bootbox.alert('Consulta deletada com sucesso!');
+                        elemento.parentNode.remove();
+                        getPastasConsulta();
+                    } else {
+                        bootbox.alert('Não foi possivel deletar a consulta!');
+                    }
+                    dialog.modal('hide');
+                });
+            }
+        });
+    }
+
+
+    function getTabelas() {
+        $.ajax({
+            url: "/Relatorio/Construtor/BuscaTabelas",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: "{}",
+            dataType: "json",
+            success: function (data) {
+                var row = "";
+                $.each(data,
+                    function (index, item) {
+                        row += "<tr><td>" + item.Nome + "</td>";
+                        row += "<td><button id='tabelaid" + item.IdConstrutorTabela + "' type='button' class='botaotd'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button>";
+                        row += "</td></tr>";
+                    });
+                $("#tabelasdisponiveis tbody").html(row);
+            },
+            fail: function (result) {
+                bootbox.alert("Erro ao listar as tabelas");
+            }
+        });
+    }
+
+    function getCampos() {
+
+        if (tabelas.length === 0) {
+            limpaCampos();
+        } else {
+            $.ajax({
+                url: "/Relatorio/Construtor/BuscaCampos",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                data: { tabelas: tabelas },
+                dataType: "json",
+                success: function (data) {
+                    var row = "";
+                    var rowCalculo = "";
+                    $.each(data,
+                        function (index, item) {
+                            row += "<tr><td>" +
+                                item.Nome +
+                                "</td><td>" +
+                                item.ConstrutorTabela.Nome +
+                                "." +
+                                item.Nome +
+                                "</td><td>" +
+                                item.ConstrutorTabela.Nome +
+                                "</td><td>";
+                            row += "<button  id='campoid" +
+                                item.IdConstrutorCampo +
+                                "' type='button' class='botaotd' data-tipo='" + item.Tipo + "'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button></td></tr>";
+                            rowCalculo += "<tr id='campocalculosid" + item.IdConstrutorCampo + "'><td>" + item.ConstrutorTabela.Nome + "." + item.Nome + "</td><td><button type='button'" +
+                                " data-tipo='" + item.tipo + "'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span></button></td></tr>";
+                        });
+
+                    $("#camposdisponiveis tbody").html(row);
+                    var rowBody = row.replace(/campoid/g, "campofuncoesid");
+                    $("#camposdisponiveis_funcoes tbody").html(rowBody);
+                    //var rowGrupo = row.replace(/campoid/g, "campogruposid");
+                    //$("#camposdisponiveis_grupo tbody").html(rowGrupo);
+                    var rowFiltro = row.replace(/campoid/g, "campofiltrosid");
+                    $("#camposdisponiveis_filtro tbody").html(rowFiltro);
+                    //var rowCalculo = row.replace(/campoid/g, "campocalculosid");
+                    $("#camposdisponiveis_calculo tbody").html(rowCalculo);
+                    var rowPosicao = row.replace(/campoid/g, "campoposicaoid");
+                    $("#camposdisponiveis_posicao tbody").html(rowPosicao);
+
+                    //getRelacionamentos();
+                    //checaCamposSelecionados();
+                    //checaSelecionados();
+
+                },
+                error: function (result) {
+                    bootbox.alert("Problemas no carregamentos dos campos");
+                }
+            });
+        }
+    }
+
+    function getRelacionamentos() {
+        var tabelaSelecionadas = $('#tabelasselecionadas li');
+        $.each(tabelaSelecionadas, function (index, li) {
+            var span = li.childNodes[1];
+            if (span) {
+                tabelaSelecionadas[index].removeChild(span);
+            }
+        });
+        $.ajax({
+            url: "/Relatorio/Construtor/BuscaRelacionamentos",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            data: { tabelas: tabelas },
+            dataType: "json",
+            success: function (data) {
+                var linha = "";
+                $.each(data,
+                    function (index, item) {
+
+                        var tabelaesquerda = item.ConstrutorTabela;
+                        var campoesquerda = item.ConstrutorCampo;
+                        var tabeladireita = item.ConstrutorTabelaMestre;
+                        var campodireita = item.ConstrutorCampoMestre;
+
+                        linha += '<div class="col-md-12" id="liRelat' +
+                            item.IdConstrutorChaveEstrangeira +
+                            '">' +
+                            '<div class="col-md-2">' +
+                            tabelaesquerda.Nome +
+                            '.' +
+                            campoesquerda.Nome +
+                            '</div>' +
+                            '<div class="col-md-8"> ' +
+                            '<select class="form-control">' +
+                            '<option value="=" selected="">Mostrar somente os dados das duas tabelas que se relacionam</option>' +
+                            '<option value="+=">Mostrar todos os dados da tabela ' + tabelaesquerda.Nome + ' e somente os dados de ' + tabeladireita.Nome + ' que relacionam</option>' +
+                            '<option value="=+">Mostrar todos os dados da tabela ' + tabeladireita.Nome + ' e somente os dados de ' + tabelaesquerda.Nome + ' que relacionam</option>' +
+                            '<option value="++">Mostrar todos os dados das duas tabelas</option>' +
+                            '</select>' +
+                            '</div>' +
+                            '<div class="col-md-2">' +
+                            tabeladireita.Nome +
+                            '.' +
+                            campodireita.Nome +
+                            '</div>' +
+                            '</div>';
+                        var table1 = $('#tabelaiddest' + item.IdConstrutorTabela);
+                        if (table1.html().indexOf('glyphicon') === -1) {
+                            table1.append('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>');
+                        }
+                        var table2 = $('#tabelaiddest' + item.IdConstrutorTabelaMestre);
+                        if (table2.html().indexOf('glyphicon') === -1) {
+                            table2.append('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>');
+                        }
+
+                    });
+
+                $('#listaRelacionamento').html(linha);
+            },
+            error: function (result) {
+                bootbox.alert("Problemas no carregamentos dos relacionementos");
+            }
+        }
+        );
+    }
+
+    function getFuncao(select) {
+        var trid = select.parentNode.parentNode.id.replace("campofuncoesiddest", "");
+        select.parentNode.innerText = select.value;
+        funcoes[funcoes.indexOf(trid)] += "&" + select.value;
+        $("#apelidofuncao" + trid).html(select.value + ' ' + $("#apelidofuncao" + trid).html());
+    }
+
+    function getFiltro(objeto, id) {
+        var seletor = $("#select_operador_" + id)[0].parentNode;
+        seletor.innerText = $("#select_operador_" + id)[0].value;
+        var inputvalor = $("#input_valor_" + id)[0].parentNode;
+        inputvalor.innerText = $("#input_valor_" + id)[0].value;
+        var trid = objeto.parentNode.parentNode.id.replace("campofiltrosiddest", "");
+        filtros[filtros.indexOf(trid)] += "&" + seletor.innerText + "&" + inputvalor.innerText;
+    }
+
+
+    function montaConsulta() {
+
+        var botao = $('#btnExecutarPreview');
+
+        botao.attr('disabled', '');
+
+        $('#text_sql').html('');
+
+        var dados = $('#camposselecionados tbody tr');
+        var dadosfuncoes = $('#camposselecionados_funcoes tbody tr');
+
+        if (dados.length > 0 || dadosfuncoes.length > 0) {
+
+            var select = [];
+
+            var texto = 'SELECT ';
+
+            if ($('#ckDistinct').prop('checked')) {
+                texto += 'DISTINCT ';
+            }
+
+            texto += ' TOP 50 ';
+
+            var index;
+
+            for (index = 0; index < dados.length; ++index) {
+                select.push(dados[index].children[1].textContent + ' ' + dados[index].children[1].textContent.replace(".", ""));
+            }
+
+            var group = [];
+
+            if (dadosfuncoes.length) {
+                for (index = 0; index < dados.length; ++index) {
+                    group.push(dados[index].children[1].textContent);
+                }
+            }
+
+            for (index = 0; index < dadosfuncoes.length; ++index) {
+                switch (dadosfuncoes[index].children[3].textContent) {
+                    case 'Contar':
+                        select.push('Count(' + dadosfuncoes[index].children[1].textContent + ') Contar' + dadosfuncoes[index].children[1].textContent.replace(".", ""));
+                        break;
+                    case 'Média':
+                        select.push('AVG(' + dadosfuncoes[index].children[1].textContent + ') Media' + dadosfuncoes[index].children[1].textContent.replace(".", ""));
+                        break;
+                    case 'Máximo':
+                        select.push('Max(' + dadosfuncoes[index].children[1].textContent + ') Maximo' + dadosfuncoes[index].children[1].textContent.replace(".", ""));
+                        break;
+                    case 'Mínimo':
+                        select.push('Min(' + dadosfuncoes[index].children[1].textContent + ') Minimo' + dadosfuncoes[index].children[1].textContent.replace(".", ""));
+                        break;
+                    case 'Soma':
+                        select.push('Sum(' + dadosfuncoes[index].children[1].textContent + ') Soma' + dadosfuncoes[index].children[1].textContent.replace(".", ""));
+                        break;
+                    default:
+                }
+            }
+
+            texto += select.join(', ') + "\r\n";
+
+            texto += ' FROM ';
+
+            dados = $('#listaRelacionamento').children();
+
+            var nomeTabelas = [];
+
+            var tabelasselecionadas = $('#tabelasselecionadas li');
+
+            $.each(tabelasselecionadas, function (i, tabela) {
+                nomeTabelas.push(tabela.textContent);
+            });
+
+
+            if (dados.length) {
+                var tablesjoin = [];
+
+                $.each(nomeTabelas, function (t, tabela) {
+
+                    if (tablesjoin.indexOf(tabela) === -1) {
+
+                        if (!tablesjoin.length) {
+                            tablesjoin.push(tabela);
+                            texto += tabela;
+                        }
+
+                        $.each(dados, function (i, linha) {
+                            var dados = $(linha).children();
+
+                            var tabelaesquerda = dados[0].textContent.split('.')[0];
+                            var campoesquerda = dados[0].textContent.split('.')[1];
+                            var select = $(dados[1]).children()[0];
+                            var tipo = select.value;
+                            var tabeladireita = dados[2].textContent.split('.')[0];
+                            var campodireita = dados[2].textContent.split('.')[1];
+
+                            //if (!tablesjoin.length) {
+                            //    texto += tabelaesquerda;
+                            //}
+
+                            if (tabela === tabelaesquerda || tabela === tabeladireita) {
+
+                                if (tablesjoin.indexOf(tabeladireita) > -1) {
+                                    tabeladireita = tabelaesquerda;
+                                    if (tipo === '+=') {
+                                        tipo = '=+';
+                                    }
+                                    if (tipo === '=+') {
+                                        tipo = '+=';
+                                    }
+                                }
+
+                                var join;
+                                switch (tipo) {
+                                    case '+=': join = ' left join '; break;
+                                    case '=+': join = ' right join '; break;
+                                    case '++': join = ' full join '; break;
+                                    default: join = ' inner join '; break;
+                                }
+
+                                texto += join +
+                                    tabeladireita +
+                                    ' on ( ' +
+                                    dados[0].textContent +
+                                    ' = ' +
+                                    dados[2].textContent +
+                                    ' ) \r\n';
+
+                                //if (tablesjoin.indexOf(tabelaesquerda) === -1) {
+                                //    tablesjoin.push(tabelaesquerda);
+                                //}
+
+                                if (tablesjoin.indexOf(tabeladireita) === -1) {
+                                    tablesjoin.push(tabeladireita);
+                                }
+
+                            }
+
+                        });
+
+                    }
+
+
+                });
+
+            } else {
+
+                dados = $('#tabelasselecionadas li');
+
+                var tables = [];
+
+                for (index = 0; index < dados.length; ++index) {
+                    tables.push(dados[index].textContent);
+                }
+
+                texto += tables.join(', ') + "\r\n";
+            }
+
+            var where = [];
+
+            dados = $('#camposselecionados_filtro tbody tr');
+
+            for (index = 0; index < dados.length; ++index) {
+                var condicao;
+                if ($('#select_operador_' + index).length === 0) {
+
+                    switch (dados[index].children[1].textContent) {
+                        case "Inicia":
+                            condicao = dados[index].children[0].textContent + " Like '" + dados[index].children[2].textContent + "%'";
+                            break;
+                        case "Termina":
+                            condicao = dados[index].children[0].textContent + " Like '%" + dados[index].children[2].textContent + "'";
+                            break;
+                        case "Não inicia":
+                            condicao = dados[index].children[0].textContent + " Not Like '" + dados[index].children[2].textContent + "%'";
+                        case "Não termina":
+                            condicao = dados[index].children[0].textContent + " Not Like '%" + dados[index].children[2].textContent + "'";
+                            break;
+                        case "Entre":
+                            condicao = " Between ";
+                            break;
+                        case "Não está Entre":
+                            condicao = " Not Between ";
+                            break;
+                        case "Na Lista":
+                            condicao = " in ";
+                            break;
+                        case "Não está na Lista":
+                            condicao = " not in ";
+                            break;
+                        case "Vazio":
+                            condicao = " empty ";
+                            break;
+                        case "Não é Vazio":
+                            condicao = " not empty ";
+                            break;
+                        default:
+                            if (dados[index].dataset.tipo === "1" || dados[index].dataset.tipo === "3") {
+                                condicao = dados[index].children[0].textContent + dados[index].children[1].textContent + "'" + dados[index].children[2].textContent + "'";
+                            } else {
+                                condicao = dados[index].children[0].textContent + dados[index].children[1].textContent + dados[index].children[2].textContent;
+                            }
+                            break;
+                    }
+
+                    where.push(condicao);
+                }
+            }
+
+
+            if (where.length) {
+                texto += ' Where ' + where.join(' and ') + "\r\n";
+            }
+
+            var order = [];
+
+            dados = $('#camposselecionados_posicao tbody tr');
+
+            for (index = 0; index < dados.length; ++index) {
+                order.push(dados[index].children[1].textContent);
+            }
+
+            if (group.length) {
+                texto += ' Group By ' + group.join(', ') + "\r\n";
+            }
+
+            if (order.length) {
+                texto += ' Order By ' + order.join(', ');
+            }
+
+            $('#text_sql').html(texto);
+            botao.removeAttr('disabled');
+        }
+
+    }
+
+    function montaGroupBy() {
+        $("#camposselecionados_grupo tbody").html('');
+        if (funcoes.length) {
+            var dados = $('#camposselecionados tbody').html();
+            dados.replace(/campoid/g, "campogruposid");
+            $("#camposselecionados_grupo tbody").html(dados);
+        }
+    }
+
+    function limpaCampos() {
+        $("#camposdisponiveis tbody").html('');
+        $("#camposdisponiveis_funcoes tbody").html('');
+        $("#camposdisponiveis_grupo tbody").html('');
+        $("#camposdisponiveis_filtro tbody").html('');
+        $("#camposdisponiveis_calculo tbody").html('');
+        $("#camposdisponiveis_posicao tbody").html('');
+
+        $("#tabelasselecionadas").html('');
+        $("#camposselecionados tbody").html('');
+        $("#camposselecionados_funcoes tbody").html('');
+        $("#camposselecionados_grupo tbody").html('');
+        $("#camposselecionados_filtro tbody").html('');
+        $("#camposselecionados_calculo tbody").html('');
+        $("#camposselecionados_posicao tbody").html('');
+
+        $('#listaRelacionamento').html('');
+        $('#jsGrid').html('');
+        $('#nomeconsulta').removeAttr('disabled');
+        $('#botaoSalvarComo').attr('disabled', '');
+        $("#nomeconsulta").val("");
+
+        idConsultaDinamicaConstrutor = null;
+        tabelas = [];
+        campos = [];
+        funcoes = [];
+        filtros = [];
+        posicoes = [];
+        getTabelas();
+    }
+
+    function checaCamposSelecionados() {
+        var index;
+        var tr;
+
+        for (index = grupos.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis tbody").html().search(grupos[index]) === -1) {
+                grupos.splice(index, 1);
+            }
+        }
+
+        for (index = campos.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis tbody").html().search(campos[index]) === -1) {
+                tr = $("#campoiddest" + campos[index]);
+                tr.remove();
+                campos.splice(index, 1);
+            }
+        }
+
+        for (index = funcoes.length - 1; index >= 0; --index) {
+            var linhaid = funcoes[index].split('&')[0];
+            if ($("#camposdisponiveis_funcoes tbody").html().search(linhaid) === -1) {
+                tr = $("#campofuncoesiddest" + linhaid);
+                tr.remove();
+                funcoes.splice(index, 1);
+            }
+        }
+
+        for (index = filtros.length - 1; index >= 0; --index) {
+            var filtroid = filtros[index].split('&')[0];
+            if ($("#camposdisponiveis_filtro tbody").html().search(filtroid) === -1) {
+                tr = $("#campofiltrosiddest" + filtroid);
+                tr.remove();
+                filtros.splice(index, 1);
+            }
+        }
+
+        for (index = posicoes.length - 1; index >= 0; --index) {
+            if ($("#camposdisponiveis_posicao tbody").html().search(posicoes[index]) === -1) {
+                tr = $("#campoposicaoiddest" + posicoes[index]);
+                tr.remove();
+                posicoes.splice(index, 1);
+            }
+        }
+    }
+
+    function EfetivaBotaoFiltro(id) {
+
+        if ($("#" + id + " td select")[0].selectedIndex > 0 &&
+            $("#" + id + " td input")[0].value.trim().length > 0) {
+            $("#" + id + " td button")[0].disabled = false;
+            $("#" + id + " td button")[0].className = "btn btn-success btn-xs";
+        } else {
+            $("#" + id + " td button")[0].disabled = true;
+            $("#" + id + " td button")[0].className = "btn btn-default btn-xs";
+        }
+
+    }
+
+    function reOrdenacampos(linhascampos) {
+        campos = [];
+        for (var indice = 0; indice < linhascampos.length; indice++) {
+            var campoid = linhascampos[indice].id.replace("campoiddest", "");
+            campos.push(campoid);
+        }
+    }
+
+    function reOrdenaposicoes(linhasposicoes) {
+        posicoes = [];
+        for (var indice = 0; indice < linhasposicoes.length; indice++) {
+            var campoid = linhasposicoes[indice].id.replace("campoposicaoiddest", "");
+            posicoes.push(campoid);
+        }
+    }
+
+    function checaSelecionados() {
+        var camposdisponiveis = $("#camposdisponiveis tbody tr td button");
+        $.each(camposdisponiveis, function (i, campo) {
+            if (campos.indexOf(campo.id.replace("campoid", "")) >= 0) {
+                campo.innerHTML = "<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>";
+                campo.style.color = "rgb(221, 28, 28)";
+            }
+        });
+
+        var camposdisponiveisFuncoes = $("#camposdisponiveis_funcoes tbody tr td button");
+        $.each(camposdisponiveisFuncoes, function (i, campoFuncoes) {
+            if (funcoes.indexOf(campoFuncoes.id.replace("campofuncoesid", "")) >= 0) {
+                campoFuncoes.innerHTML = "<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>";
+                campoFuncoes.style.color = "rgb(221, 28, 28)";
+            }
+        });
+
+        var camposdisponiveisFiltro = $("#camposdisponiveis_filtro tbody tr td button");
+        $.each(camposdisponiveisFiltro, function (i, campoFiltro) {
+            if (filtros.indexOf(campoFiltro.id.replace("campofiltrosid", "")) >= 0) {
+                campoFiltro.innerHTML = "<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>";
+                campoFiltro.style.color = "rgb(221, 28, 28)";
+            }
+        });
+
+        var camposdisponiveisPosicao = $("#camposdisponiveis_posicao tbody tr td button");
+        $.each(camposdisponiveisPosicao, function (i, campoPosicao) {
+            if (posicoes.indexOf(campoPosicao.id.replace("campoposicaoid", "")) >= 0) {
+                campoPosicao.innerHTML = "<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>";
+                campoPosicao.style.color = "rgb(221, 28, 28)";
+            }
+        });
+
+    }
+
+    function AdicionaTabela(idTabela, elemento) {
+        tabelas.push(idTabela);
+
+        $(elemento).css("color", "#dd1c1c");
+        $(elemento).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
+
+        $('#tabelasselecionadas').append('<li id="tabelaiddest' +
+            idTabela +
+            '">' +
+            $(elemento.parentElement.parentElement).find("td").eq(0).html() +
+            '</li>');
+    }
+
+    function AdicionaCampo(idCampo, elemento, apelido) {
+        campos.push(idCampo);
+
+        $(elemento).css("color", "#dd1c1c");
+        $(elemento).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
+
+
+        $('#camposselecionados').append('<tr id="campoiddest' + idCampo + '">'
+            + '<td><a id="apelidocampo' + idCampo + '">' + (apelido === null || apelido.trim().length === 0 ? $(elemento.parentElement.parentElement).find("td").eq(0).html() : apelido) + '</a></td>'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(2).html() + '</td>'
+            + '<td> '
+            + '<button class="btn btn-danger btn-xs dowm" aria- label="Left Align" >'
+            + '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>'
+            + '</button>'
+            + '<button class="btn btn-success btn-xs up">'
+            + '<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>'
+            + '</button></td>'
+            + '</tr>');
+    }
+
+    function AdicionaFuncao(idFuncao, elemento, apelido) {
+        funcoes.push(idFuncao);
+
+        $(elemento).css("color", "#dd1c1c");
+        $(elemento).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
+
+        $('#camposselecionados_funcoes').append('<tr id="campofuncoesiddest' + idFuncao + '">'
+            + '<td><a id="apelidofuncao' + idFuncao + '">' + (apelido === null || apelido.trim().length === 0 ? $(elemento.parentElement.parentElement).find("td").eq(0).html() : apelido) + '</td>'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(2).html() + '</td>'
+            + '<td>  <select name="filter_for" onchange="getFuncao(this)" > '
+            + '<option value = "Escolha">--Escolha a opção--</option> '
+            + '<option value = "Média">Média</option> '
+            + '<option value = "Contar">Contar</option>'
+            + '<option value = "Máximo">Máximo</option>'
+            + '<option value = "Mínimo">Mínimo</option>'
+            + '<option value = "Soma">Soma</option>'
+            + '</select ></td>'
+            + '</tr>');
+    }
+
+    function AdicionaFiltro(idFiltro, elemento, tipoDado) {
+        filtros.push(idFiltro);
+
+        $(elemento).css("color", "#dd1c1c");
+        $(elemento).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
+
+        var trid = filtros.length - 1;
+
+        var tr = $('<tr/>');
+        tr.attr('id', 'campofiltrosiddest' + idFiltro);
+        tr.attr('data-tipo', tipoDado);
+
+        var td1 = $('<td/>');
+        td1.html($(elemento.parentElement.parentElement).find("td").eq(1).html());
+
+        var td2 = $('<td/>');
+
+        var td3 = $('<td/>');
+
+        var td4 = $('<td/>');
+
+
+        var select = $('<select/>');
+        select.addClass('form-control');
+        select.attr('id', 'select_operador_' + trid);
+
+        var opEscolha = $('<option/>');
+        opEscolha.attr('value', 'Escolha');
+        opEscolha.attr('disabled', 'true');
+        opEscolha.attr('selected', 'true');
+        opEscolha.html('--Escolha a opção--');
+        select.append(opEscolha);
+
+        //Igual = 1,
+        var opIgual = $('<option/>');
+        opIgual.attr('value', '=');
+        opIgual.html('=');
+        select.append(opIgual);
+        //NaoIgual = 2,
+        var opNaoIgual = $('<option/>');
+        opNaoIgual.attr('value', '<>');
+        opNaoIgual.html('<>');
+        select.append(opNaoIgual);
+        //Nulo = 3,
+        var opNulo = $('<option/>');
+        opNulo.attr('hidden', 'true');
+        opNulo.attr('value', '=');
+        opNulo.html('=');
+        select.append(opNulo);
+        //NaoNulo = 4,
+        var opNaoNulo = $('<option/>');
+        opNaoNulo.attr('hidden', 'true');
+        opNaoNulo.attr('value', '=');
+        opNaoNulo.html('=');
+        select.append(opNaoNulo);
+        //Entre = 5,
+        var opEntre = $('<option/>');
+        opEntre.attr('hidden', 'true');
+        opEntre.attr('value', 'Entre');
+        opEntre.html('Entre');
+        select.append(opEntre);
+        //NaoEntre = 6,
+        var opNaoEntre = $('<option/>');
+        opNaoEntre.attr('hidden', 'true');
+        opNaoEntre.attr('value', 'Não está Entre');
+        opNaoEntre.html('Não está Entre');
+        select.append(opNaoEntre);
+        //MenorQue = 7,
+        var opMenorQue = $('<option/>');
+        opMenorQue.attr('value', '<');
+        opMenorQue.html('<');
+        select.append(opMenorQue);
+        //MaiorQue = 8,
+        var opMaiorQue = $('<option/>');
+        opMaiorQue.attr('value', '>');
+        opMaiorQue.html('>');
+        select.append(opMaiorQue);
+        //MenorQueOuIgual = 9,
+        var opMenorQueOuIgual = $('<option/>');
+        opMenorQueOuIgual.attr('value', '<=');
+        opMenorQueOuIgual.html('<=');
+        select.append(opMenorQueOuIgual);
+        //MaiorQueOuIgual = 10,
+        var opMaiorQueOuIgual = $('<option/>');
+        opMaiorQueOuIgual.attr('value', '>=');
+        opMaiorQueOuIgual.html('>=');
+        select.append(opMaiorQueOuIgual);
+        //NaLista = 11,
+        var opNaLista = $('<option/>');
+        opNaLista.attr('hidden', 'true');
+        opNaLista.attr('value', 'Na Lista');
+        opNaLista.html('Na Lista');
+        select.append(opNaLista);
+        //NaoNaLista = 12,
+        var opNaoNaLista = $('<option/>');
+        opNaoNaLista.attr('hidden', 'true');
+        opNaoNaLista.attr('value', 'Não está na Lista');
+        opNaoNaLista.html('Não está na Lista');
+        select.append(opNaoNaLista);
+        //Como = 13,
+        var opComoInicia = $('<option/>');
+        tipoDado !== 1 ? opComoInicia.attr('hidden', 'true') : opComoInicia.attr('');
+        opComoInicia.attr('value', 'Inicia');
+        opComoInicia.html('Inicia');
+        select.append(opComoInicia);
+        //NaoComo = 14
+        var opNaoComoInicia = $('<option/>');
+        tipoDado !== 1 ? opNaoComoInicia.attr('hidden', 'true') : opNaoComoInicia.attr('');
+        opNaoComoInicia.attr('value', 'Não inicia');
+        opNaoComoInicia.html('Não inicia');
+        select.append(opNaoComoInicia);
+        //ComoEnd = 15
+        var opComoTermina = $('<option/>');
+        tipoDado !== 1 ? opComoTermina.attr('hidden', 'true') : opComoTermina.attr('');
+        opComoTermina.attr('value', 'Termina');
+        opComoTermina.html('Termina');
+        select.append(opComoTermina);
+        //NaoComoEnd = 16
+        var opNaoComoTermina = $('<option/>');
+        tipoDado !== 1 ? opNaoComoTermina.attr('hidden', 'true') : opNaoComoTermina.attr('');
+        opNaoComoTermina.attr('value', 'Não termina');
+        opNaoComoTermina.html('Não termina');
+        select.append(opNaoComoTermina);
+
+        var input = $('<input/>');
+        input.attr('id', 'input_valor_' + trid);
+        switch (tipoDado) {
+            case 2:
+            case 4:
+            case 5:
+            case 6:
+                {
+                    input.attr('type', 'number');
+                    break;
+                }
+            case 3:
+                {
+                    input.attr('type', 'date');
+                    break;
+                }
+            default:
+                {
+                    input.attr('type', 'text');
+                    break;
+                }
+        }
+        input.attr('name', 'valor');
+        input.addClass('form-control');
+
+        var button = $('<button/>');
+        button.attr('type', 'button');
+        button.addClass('btn btn-default btn-xs');
+        button.attr('onclick','getFiltro(this,' + trid + ')');
+        button.attr('disabled', 'true');
+        button.html('Efetiva');
+
+        td2.append(select);
+        td3.append(input);
+        td4.append(button);
+
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+
+        $('#camposselecionados_filtro').append(tr);
+
+    }
+
+    function AdicionaPosicao(idPosicao, elemento) {
+
+        posicoes.push(idPosicao);
+
+        $(elemento).css("color", "#dd1c1c");
+        $(elemento).html("<span class='glyphicon glyphicon-minus' aria-hidden='true'></span>");
+
+        $('#camposselecionados_posicao').append('<tr id="campoposicaoiddest' + idPosicao + '">'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(0).html() + '</td>'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(1).html() + '</td>'
+            + '<td>' + $(elemento.parentElement.parentElement).find("td").eq(2).html() + '</td>'
+            + '<td> '
+            + '<button class="btn btn-danger btn-xs dowm" aria- label="Left Align" >'
+            + '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>'
+            + '</button>'
+            + '<button class="btn btn-success btn-xs up">'
+            + '<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>'
+            + '</button></td>'
+            + '</tr>');
+    }
+
+    $(document).ready(function () {
+
+        tabelas = [];
+        campos = [];
+        funcoes = [];
+        filtros = [];
+        grupos = [];
+        posicoes = [];
+
+        condicoes = [];
+        groupby = [];
+        orderby = [];
+
+        $(document).on("click", "#camposselecionados tbody tr td a", function (event) {
+            event.preventDefault();
+            var a = $(this);
+            bootbox.prompt("Digite o apelido para o campo!", function (result) {
+                if (result != null && result.trim().length > 0)
+                    a.html(result);
+            });
+        });
+
+        $(document).on("click", "#camposselecionados_funcoes tbody tr td a", function (event) {
+            event.preventDefault();
+            var a = $(this);
+            bootbox.prompt("Digite o apelido para o campo!", function (result) {
+                if (result != null && result.trim().length > 0)
+                    a.html(result);
+            });
+        });
+
+        $(document).on("click", "#camposselecionados_filtro tbody tr td select", function (event) {
+            event.preventDefault();
+            EfetivaBotaoFiltro($(this).parents()[1].id);
+        });
+
+        $(document).on("keyup", "#camposselecionados_filtro tbody tr td input", function (event) {
+            event.preventDefault();
+            EfetivaBotaoFiltro($(this).parents()[1].id);
+        });
+
+        //Aba Preview
+        $(document).on("click", "#linkAbaConstrutorPreview", function (event) {
+            event.preventDefault();
+            montaConsulta();
+        });
+
+        //Escolhendo as tabelas
+        $(document).on("click", "#tabelasdisponiveis tbody tr td button", function (event) {
+            event.preventDefault();
+
+            var ok = 0;
+            var theid = $(this).attr('id').replace("tabelaid", "");
+
+            var novastabelas = [];
+
+            for (index = 0; index < tabelas.length; ++index) {
+
+                if (tabelas[index] === theid) {
+
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
+
+                    var tr = $("#tabelaiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novastabelas.push(tabelas[index]);
+                }
+            }
+
+            tabelas = novastabelas;
+
+            if (!ok) {
+
+                AdicionaTabela(theid, this);
+
+            }
+
+            getRelacionamentos();
+            getCampos();
+            checaCamposSelecionados();
+            checaSelecionados();
+
+        });
+
+        //Escolhendo os campos
+        $(document).on("click",
+            "#camposdisponiveis tbody tr td button",
+            function (event) {
+
+                event.preventDefault();
+                var ok = 0;
+                var theid = $(this).attr('id').replace("campoid", "");
+
+                var novoscampos = [];
+
+                for (index = 0; index < campos.length; ++index) {
+
+                    if (campos[index] === theid) {
+
+                        $(this).css("color", "#0c8c12");
+                        $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
+
+                        var tr = $("#campoiddest" + theid);
+                        tr.css("background-color", "#FF3700");
+                        tr.fadeOut(400, function () {
+                            tr.remove();
+                        });
+
+                        ok = 1;
+                    }
+                    else {
+                        novoscampos.push(campos[index]);
+                    }
+                }
+
+                campos = novoscampos;
+
+                if (!ok) {
+
+                    AdicionaCampo(theid, this, null);
+                }
+
+                montaGroupBy();
+            });
+
+        //Escolhendo as funções
+        $(document).on("click", "#camposdisponiveis_funcoes tbody tr td button", function (event) {
+
+            event.preventDefault();
+            var ok = 0;
+            var theid = $(this).attr('id').replace("campofuncoesid", "");
+
+            if ($('#campoiddest' + theid).length) {
+                bootbox.alert('Esse campo está selecionado na aba campos');
+            } else {
+
+                var novasfuncoes = [];
+
+                for (var index = 0; index < funcoes.length; ++index) {
+
+                    if (funcoes[index].slice(0, 36) === theid) {
+
+                        $(this).css("color", "#0c8c12");
+                        $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
+
+                        var tr = $("#campofuncoesiddest" + theid);
+                        tr.css("background-color", "#FF3700");
+                        tr.fadeOut(400, function () {
+                            tr.remove();
+                        });
+
+                        ok = 1;
+                    }
+                    else {
+                        novasfuncoes.push(funcoes[index]);
+                    }
+                }
+
+                funcoes = novasfuncoes;
+
+                if (!ok) {
+
+                    AdicionaFuncao(theid, this, null);
+                }
+
+                montaGroupBy();
+            }
+
+        });
+
+        $(document).on("click", "#camposdisponiveis_filtro tbody tr td button", function (event) {
+
+            event.preventDefault();
+            var ok = 0;
+            var theid = $(this).attr('id').replace("campofiltrosid", "");
+
+            var tipoDado = parseInt($(this).attr('data-tipo'));
+
+            var novasfiltros = [];
+
+            for (index = 0; index < filtros.length; ++index) {
+
+                if (filtros[index].indexOf(theid) >= 0) {
+
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
+
+                    var tr = $("#campofiltrosiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novasfiltros.push(filtros[index]);
+                }
+            }
+
+            filtros = novasfiltros;
+
+            if (!ok) {
+
+                AdicionaFiltro(theid, this, tipoDado);
+
+            }
+
+        });
+
+        $(document).on("click", "#camposdisponiveis_calculo tbody tr td button", function (event) {
+            event.preventDefault();
+            $('#campo_calculo').append($(this.parentElement.parentElement).find("td").eq(0).html());
+
+        });
+
+        $(document).on("click", "#camposdisponiveis_posicao tbody tr td button", function (event) {
+
+            event.preventDefault();
+            var ok = 0;
+            var theid = $(this).attr('id').replace("campoposicaoid", "");
+
+            var novasposicoes = [];
+
+            for (index = 0; index < posicoes.length; ++index) {
+
+                if (posicoes[index] === theid) {
+
+                    $(this).css("color", "#0c8c12");
+                    $(this).html("<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>");
+
+                    var tr = $("#campoposicaoiddest" + theid);
+                    tr.css("background-color", "#FF3700");
+                    tr.fadeOut(400, function () {
+                        tr.remove();
+                    });
+
+                    ok = 1;
+                }
+                else {
+                    novasposicoes.push(posicoes[index]);
+                }
+            }
+
+            posicoes = novasposicoes;
+
+            if (!ok) {
+
+                AdicionaPosicao(theid, this);
+            }
+
+        });
+
+        $(document).on("click", "#camposselecionados button", function () {
+            var row = $(this).closest('tr');
+            if ($(this).hasClass('up'))
+                row.prev().before(row);
+            else
+                row.next().after(row);
+            reOrdenacampos($(this).closest('tbody')[0].rows);
+        });
+
+        $(document).on("click", "#camposselecionados_posicao button", function () {
+            var row = $(this).closest('tr');
+            if ($(this).hasClass('up'))
+                row.prev().before(row);
+            else
+                row.next().after(row);
+            reOrdenaposicoes($(this).closest('tbody')[0].rows);
+        });
+
+        getTabelas();
+        getPastasPreview();
+
+    });
+
+
+
+</script>
+

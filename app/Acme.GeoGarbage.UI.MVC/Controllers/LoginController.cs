@@ -21,6 +21,16 @@ namespace Acme.GeoGarbage.UI.MVC.Controllers
             _usuarioAplicacaoServico = usuarioAplicacaoServico;
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _usuarioAplicacaoServico.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+
         // GET: Login
         [Authorize]
         public ActionResult Index()
@@ -42,7 +52,7 @@ namespace Acme.GeoGarbage.UI.MVC.Controllers
                     usuario.Senha));
             if (usuarioViewModel != null )
             {
-                FormsAuthentication.SetAuthCookie(usuarioViewModel.Nome,true);
+                FormsAuthentication.SetAuthCookie(usuarioViewModel.IdUsuario.ToString(),true);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -68,7 +78,7 @@ namespace Acme.GeoGarbage.UI.MVC.Controllers
                     usuario.Senha));
             if (usuarioViewModel != null)
             {
-                FormsAuthentication.SetAuthCookie(usuario.Nome, true);
+                FormsAuthentication.SetAuthCookie(usuario.IdUsuario.ToString(), true);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -116,7 +126,7 @@ namespace Acme.GeoGarbage.UI.MVC.Controllers
         public void EnviarEmail(UsuarioViewModel usuario)
         {
             MailMessage email = new MailMessage();
-            email.From = new MailAddress("william@britos.com.br", "RecuperacaoSenha@Britos.com.br");
+            email.From = new MailAddress("william@geogarbage.com.br", "RecuperacaoSenha@geogarbage.com.br");
             email.To.Add(new MailAddress(usuario.Email));
             email.Subject = "Recupearação de senhas";
             email.IsBodyHtml = true;
@@ -124,17 +134,17 @@ namespace Acme.GeoGarbage.UI.MVC.Controllers
 
             email.Body = string.Format("Prezado {0}, <br /><br />", usuario.Nome) +
                          string.Format(
-                             "Segue a senha de acesso parao site QA-Ambiental.Smartdrive.com.br solicitada no dia {0} às {1}h",
+                             "Segue a senha de acesso parao site geogarbage.com.br solicitada no dia {0} às {1}h",
                              DateTime.Now.Date, DateTime.Now.Hour) +
                          "<br /><br />Senha: " + usuario.Senha +
-                         "<br /><br />Atenciosamente,<br /><br />SmartDrive Ambiental";
+                         "<br /><br />Atenciosamente,<br /><br />Geo Garbage";
 
             SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.britos.com.br";
+            smtp.Host = "smtp.geogarbage.com.br";
             smtp.Port = 587;
             smtp.EnableSsl = false;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("william@britos.com.br", "Laisla@0906");
+            smtp.Credentials = new NetworkCredential("jose@geogarbage.com.br", "setembro1854");
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             smtp.Send(email);

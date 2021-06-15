@@ -1,4 +1,4 @@
-﻿USE Ambiental
+﻿USE GeoGarbage
 DECLARE @GUIDIDENTITY_TABLE UNIQUEIDENTIFIER
 
 --TRUNCATE TABLE Usuario
@@ -12,10 +12,9 @@ DELETE FROM ConstrutorCampo
 DELETE FROM ConstrutorTabela
 
 
+SET @GUIDIDENTITY_TABLE = NEWID()
 --Usuario
-INSERT INTO Usuario Values(NEWID(),'William','williamxbr@gmail.com','Will','will',1,0)
-INSERT INTO Usuario Values(NEWID(),'Silas','silas@britos.com.br','Silas','silas',1,0)
-INSERT INTO Usuario Values(NEWID(),'Edvan','info@savyon.com.br','Edvan','edvan',1,0)
+INSERT INTO Usuario Values(@GUIDIDENTITY_TABLE,'William','williamxbr@gmail.com','Will','will',1,0)
 
 --Tabelas
 SET @GUIDIDENTITY_TABLE = NEWID()

@@ -3,9 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - SmartDrive - Ambiental</title>
+    <title>@ViewBag.Title - Geo Garbage</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/JsGrid_Css")
+
+
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/jsGrid")
+    @*@Scripts.Render("~/bundles/jqGrid")
+    @Scripts.Render("~/bundles/fancygrid")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/geogarbage")
+    @RenderSection("scripts", required: false)
+
 </head>
 <body>
     <div class="heading">
@@ -15,19 +27,16 @@
         @RenderBody()
     </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <hr/>
-    <div class="container-fluid" style="background-color: #2F2F2F">
-        <button type="button" class="btn btn-default navbar-btn">AJUDA</button>
-        <button type="button" class="btn btn-default navbar-btn">SUGESTÕES</button>
-        <button type="button" class="btn btn-default navbar-btn">SENHA</button>
-        <button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-log-out"> </span>@Html.ActionLink(" SAIR", "Logout", "Login", new { Area = ""}, new {})</button>
-    </div>
-</nav>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <hr />
+        <div class="container-fluid" style="background-color: #2F2F2F">
+            <button type="button" class="btn btn-default navbar-btn">AJUDA</button>
+            <button type="button" class="btn btn-default navbar-btn">SUGESTÕES</button>
+            <button type="button" class="btn btn-default navbar-btn">SENHA</button>
+            <button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-log-out"> </span>@Html.ActionLink(" SAIR", "Logout", "Login", new { Area = "" }, new { })</button>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </nav>
 
 </body>
 </html>

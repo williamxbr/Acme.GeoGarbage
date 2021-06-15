@@ -19,7 +19,6 @@ namespace Acme.GeoGarbage.UI.MVC.AutoMapper
             CreateMap<ConsultaDinamicaTabelaViewModel, ConsultaDinamicaTabela>();
             CreateMap<ConsultaDinamicaCampoViewModel, ConsultaDinamicaCampo>();
             CreateMap<ConsultaDinamicaCondicaoViewModel, ConsultaDinamicaCondicao>();
-
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Acme.GeoGarbage.UI.MVC.Areas.Relatorio.Controllers
 
         [Authorize]
         [ChildActionOnly]
-        public ActionResult IndexPartial()
+        public ActionResult RelatorioViewPartial()
         {
             return PartialView();
         }

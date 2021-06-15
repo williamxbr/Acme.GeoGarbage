@@ -1,0 +1,380 @@
+﻿<div class="row-fluid" style="padding: 10px">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="panelListaPasta" class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Escolha uma pasta</div>
+                    <div class="panel-body">
+                        <ul id="listaPastasConsulta" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="panelConsultaDinamica" class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <button id="botaomenu" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                        </button>
+                        <b id="titulo"></b>
+                        <div class="config-panel" style="display: inline;float: right">
+                            <input type="checkbox" id="filtering" />Filtro
+                        </div>
+                    </div>
+                    <div id="relatorioDinamico" class="panel-body">
+
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" id="ConsultaGeraCSV" class="btn btn-success btn-sm">Exportar CSV</button>
+                        <button type="button" id="ConsultaGeraXLS" class="btn btn-primary btn-sm">Exportar XLS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Criar Pasta -->
+<div class="modal fade" id="myModalShowTableExp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Criar Pasta</h4>
+            </div>
+            <div id="divExcel" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var idConsultaDinamicaConsulta = '';
+    var displayMenuLateral = true;
+
+    function getPastasConsulta() {
+        var url = "/Relatorio/Consulta/ListaPastas";
+        var listaPastasConsulta = $("#listaPastasConsulta");
+        $.getJSON(url, "", function (response) {
+            listaPastasConsulta.empty();
+            $.each(response, function (index, item) {
+                var li = $('<li/>');
+                li.attr('id', 'pastaConsulta' + item.IdConsultaPasta);
+                li.addClass('list-group-item');
+                li.append(item.NomePasta);
+                var ul = $('<ul/>');
+
+                for (var i = 0; i < item.ConsultasDinamicas.length; i++) {
+                    var consulta = item.ConsultasDinamicas[i];
+                    var ili = $('<li/>');
+                    ili.attr('id', 'consulta' + consulta.IdConsultaDinamica);
+                    ili.append(consulta.NomeConsultaDinamica);
+                    ul.append(ili);
+                }
+
+                li.append(ul);
+                listaPastasConsulta.append(li);
+            });
+        });
+    }
+
+    $(function () {
+        $("#ConsultaGeraXLS").click(function () {
+            var tbexport = $('<table/>');
+            var headjsgrid = $('.jsgrid-header-row');
+            var bodyjsgrid = $('.jsgrid-grid-body table tbody');
+            tbexport.append(headjsgrid.clone());
+            tbexport.append(bodyjsgrid.clone());
+            tbexport.attr('id', 'tbexportexcel');
+
+            $('#divExcel').html(tbexport);
+
+            //$('#myModalShowTableExp').modal('show');
+
+            $("#tbexportexcel").table2excel({
+                filename: $('#titulo').html() + ".xls"
+            });
+        });
+    });
+
+    $(document).ready(function () {
+
+        getPastasConsulta();
+
+        var csv = $("#grid").jsGrid("exportData", {
+            type: "csv", //Only CSV supported
+            subset: "all" | "visible", //Visible will only output the currently displayed page
+            delimiter: "|", //If using csv, the character to seperate fields
+            includeHeaders: true, //Include header row in output
+            encapsulate: true, //Surround each field with qoutation marks; needed for some systems
+            newline: "\r\n", //Newline character to use
+
+            //Takes each item and returns true if it should be included in output.
+            //Executed only on the records within the given subset above.
+            filter: function (item) { return true },
+
+            //Transformations are a way to modify the display value of the output.
+            //Provide a key of the field name, and a function that takes the current value.
+            transformations: {
+                "Married": function (value) {
+                    if (value === true)
+                        return "Yes";
+                    if (value !== false)
+                        return "No";
+                }
+            }
+        });
+
+
+        $('#ConsultaGeraCSV').click(function () {
+            var data = $('#' + idConsultaDinamicaConsulta).data('JSGrid').data;
+            if (data === '')
+                return;
+
+            var campos = $('#' + idConsultaDinamicaConsulta).data('JSGrid').fields;
+
+            JSONToCSVConvertor(data, campos, $('#titulo').html(), true);
+        });
+
+
+        //$('#ConsultaGeraXLS').click(function () {
+        //    var dados = $('#' + idConsultaDinamicaConsulta).data('JSGrid').data;
+        //    $.ajax({
+        //        url: "/Relatorio/Consulta/ExportarExcel",
+        //        type: "POST",
+        //        contentType: "application/json; charset=utf-8",
+        //        traditional: true,
+        //        data: JSON.stringify({ dados }),
+        //        dataType: "json",
+        //        success: function (response) {
+        //            bootbox.alert('Esportação concluida com sucesso');
+        //        },
+        //        error: function (result) {
+        //            bootbox.alert("Falhou ao exportar para o Excel");
+        //        }
+        //    });
+
+        //});
+
+
+        function JSONToCSVConvertor(JSONData, campos, ReportTitle, ShowLabel) {
+            //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+            var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+            var CSV = '';
+            //Set Report title in first row or line
+
+            //CSV += ReportTitle + '\r\n\n';
+
+            //This condition will generate the Label/Header
+            if (ShowLabel) {
+                var row = "";
+
+                //This loop will extract the label from 1st index of on array
+                for (var index in campos) {
+
+                    //Now convert each value to string and comma-seprated
+                    row += campos[index].title + ',';
+                }
+
+                row = row.slice(0, -1);
+
+                //append Label row with line break
+                CSV += row + '\r\n';
+            }
+
+            //1st loop is to extract each row
+            for (var i = 0; i < arrData.length; i++) {
+                var row = "";
+
+                //2nd loop will extract each column and convert it in string comma-seprated
+                for (var index in arrData[i]) {
+                    row += '"' + arrData[i][index] + '",';
+                }
+
+                row.slice(0, row.length - 1);
+
+                //add a line break after each row
+                CSV += row + '\r\n';
+            }
+
+            if (CSV === '') {
+                alert("Invalid data");
+                return;
+            }
+
+            //Generate a file name
+            var fileName = "Relatorio_";
+            //this will remove the blank-spaces from the title and replace it with an underscore
+            fileName += ReportTitle.replace(/ /g, "_");
+
+            //Initialize file format you want csv or xls
+            var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+            // Now the little tricky part.
+            // you can use either>> window.open(uri);
+            // but this will not work in some browsers
+            // or you will not get the correct file extension
+
+            //this trick will generate a temp <a /> tag
+            var link = document.createElement("a");
+            link.href = uri;
+
+            //set the visibility hidden so it will not effect on your web-layout
+            link.style = "visibility:hidden";
+            link.download = fileName + ".csv";
+
+            //this part will append the anchor tag and remove it after automatic click
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        $(document).on("click", "#botaomenu", function (event) {
+            event.preventDefault();
+            displayMenuLateral = !displayMenuLateral;
+            $("#panelListaPasta").toggle(displayMenuLateral);
+
+            if (displayMenuLateral) {
+                $("#panelConsultaDinamica").removeClass();
+                $("#panelConsultaDinamica").addClass("col-md-9");
+            } else {
+                $("#panelConsultaDinamica").removeClass();
+                $("#panelConsultaDinamica").addClass("col-md-12");
+            }
+
+        });
+
+
+        $(document).on("click", "#listaPastasConsulta li ul li", function (event) {
+            event.preventDefault();
+
+            idConsultaDinamicaConsulta = $(this).attr('id').replace('consulta', '');
+
+            var url = "/Relatorio/Consulta/RetornaConsultaDinamica";
+
+            var grid = $('<div/>');
+            grid.attr('id', idConsultaDinamicaConsulta);
+
+            var panelbody = $('#relatorioDinamico');
+
+            panelbody.html(grid);
+
+            $('#titulo').html($(this).html());
+
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center">Por favor aguarde enquanto carrega a consulta...</p>',
+                closeButton: false
+            });
+            $.getJSON(url, { idConsultaDinamica: idConsultaDinamicaConsulta }, function (response) {
+
+                var dados1 = [];
+                var colunas1 = [];
+
+                var col = 0;
+                $.each(response.querylist[0], function (i, c) {
+                    var atributos = {};
+                    atributos['name'] = i;
+                    atributos['title'] = response.apelidoslist[col];
+                    if (typeof (c) == 'number') {
+                        atributos['type'] = 'number';
+                    } else {
+                        atributos['type'] = 'text';
+                    }
+                    colunas1.push(atributos);
+                    col++;
+                });
+
+
+                $.each(response.querylist, function (index, item) {
+                    var row = {};
+                    $.each(item, function (index, field) {
+
+                        if (field != null && field.hasOwnProperty('TotalMilliseconds')) {
+                            row[index] = field.TotalMilliseconds === 0 ? '00:00:00' : new Date(field.TotalMilliseconds).toJSON().substr(11, 8);
+                        }
+                        else {
+                            if (typeof (field) == 'string' && field.indexOf('/Date') >= 0) {
+                                row[index] = new Date(parseInt(field.slice(6, 20))).toLocaleString('pt-br');
+                            } else {
+                                row[index] = field;
+                            }
+                        }
+
+                    });
+                    dados1.push(row);
+                });
+
+                $("#" + idConsultaDinamicaConsulta).jsGrid({
+                    width: "100%",
+                    height: "600px",
+
+                    paging: true,
+                    filtering: false,
+                    //autoload: true,
+                    controller: {
+                        loadData: function (filter) {
+
+                            var result = $.grep(dados1, function (item, idx) {
+                                for (var key in filter) {
+                                    if (filter.hasOwnProperty(key)) {
+                                        var value = filter[key];
+                                        if (value === undefined) return true;
+                                        if (typeof (value) == 'number') {
+                                            if (item[key] !== value)
+                                                return false;
+                                        } else {
+                                            if (value.length > 0) {
+                                                if (item[key].toString().indexOf(value) === -1)
+                                                    return false;
+                                            }
+                                        }
+                                    }
+                                }
+                                return true;
+                            });
+                            return result;
+                        }
+                    },
+
+                    noDataContent: "Dados não encontrados",
+                    pageIndex: 1,
+                    pageSize: 20,
+                    pageButtonCount: 15,
+                    pagerFormat: "Paginas: {first} {prev} {pages} {next} {last}    {pageIndex} de {pageCount}",
+                    pagePrevText: "Anterior",
+                    pageNextText: "Próximo",
+                    pageFirstText: "Primeiro",
+                    pageLastText: "Último",
+                    pageNavigatorNextText: "...",
+                    pageNavigatorPrevText: "...",
+                    loadMessage: "Por favor, aguarde...",
+
+
+                    data: dados1,
+
+                    fields: colunas1
+
+                });
+
+                dialog.modal('hide');
+
+            }).fail(function () {
+                dialog.modal('hide');
+                bootbox.alert('Erro na cosulta');
+            });
+
+            $(".config-panel input[type=checkbox]").on("click", function () {
+                var $cb = $(this);
+                $("#" + idConsultaDinamicaConsulta).jsGrid("option", $cb.attr("id"), $cb.is(":checked"));
+            });
+
+        });
+    });
+</script>

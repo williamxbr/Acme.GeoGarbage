@@ -1,0 +1,39 @@
+﻿<div class="row-fluid" style="padding: 10px">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Escolha uma pasta</div>
+                    <div class="panel-body">
+                        <ul id="listaPastas2" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getPastas() {
+        var url = "/Relatorio/Consulta/ListaPastas";
+        var listaPastas = $("#listaPastas2");
+        $.getJSON(url, "", function (response) {
+            listaPastas.empty();
+            $.each(response, function (index, item) {
+                var li = $('<li/>');
+                li.attr('id', item.IdConsultaPasta);
+                li.addClass('list-group-item');
+                li.attr('onmousedown', 'alteraCorlistaPasta(this.id)');
+                li.append(item.NomePasta);
+                listaPastas.append(li);
+            });
+        });
+    }
+
+    $(document).ready(function() {
+        getPastas();
+    });
+</script>

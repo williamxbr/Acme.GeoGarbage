@@ -11,6 +11,10 @@
     <AssemblyName>Acme.GeoGarbage.Aplicacao</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,17 +34,56 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AplicacaoServicoConsulta.cs" />
     <Compile Include="AplicacaoServicoBase.cs" />
+    <Compile Include="ClienteAcessoTraffilogAplicacaoServico.cs" />
+    <Compile Include="ConsultaDinamicaAssociacaoAplicacaoServico.cs" />
+    <Compile Include="DescargaAterroAplicacaoServico.cs" />
+    <Compile Include="DescargaDeColetaAplicacaoServico.cs" />
+    <Compile Include="DeviceAplicacaoServico.cs" />
+    <Compile Include="DeviceInstaladoAplicacaoServico.cs" />
+    <Compile Include="ExecucaoPontoDeColetaAplicacaoServico.cs" />
+    <Compile Include="InterrupcaoAplicacaoServico.cs" />
+    <Compile Include="JornadaAplicacaoServico.cs" />
+    <Compile Include="LastMileageEngineAplicacaoServico.cs" />
+    <Compile Include="LocalizacaoTraffilogAplicacaoServico.cs" />
+    <Compile Include="PadraoDaContaAplicacaoServico.cs" />
+    <Compile Include="PerfilAplicacaoServico.cs" />
+    <Compile Include="PontoDeColetaAplicacaoServico.cs" />
+    <Compile Include="RecursoDaJornadaAplicacaoServico.cs" />
+    <Compile Include="RetornoParaCompletarColetaAplicacaoServico.cs" />
+    <Compile Include="RetornoParaGaragemAplicacaoServico.cs" />
+    <Compile Include="RotaRealizadaAplicacaoServico.cs" />
+    <Compile Include="SelecaoDeNovoSetorAplicacaoServico.cs" />
+    <Compile Include="SetorAplicacaoServico.cs" />
+    <Compile Include="MotivoInterrupcaoAplicacaoServico.cs" />
+    <Compile Include="ClienteAplicacaoServico.cs" />
     <Compile Include="ConstrutorCampoAplicacaoServico.cs" />
     <Compile Include="ConstrutorChaveEstrangeiraAplicacaoServico.cs" />
     <Compile Include="ConstrutorTabelaAplicacaoServico.cs" />
@@ -49,13 +92,27 @@
     <Compile Include="ConsultaDinamicaCondicaoAplicacaoServico.cs" />
     <Compile Include="ConsultaDinamicaTabelaAplicacaoServico.cs" />
     <Compile Include="ConsultaPastaAplicacaoServico.cs" />
+    <Compile Include="ConfiguracaoAppAplicacaoServico.cs" />
+    <Compile Include="RecursoDeColetaAplicacaoServico.cs" />
+    <Compile Include="GaragemAplicacaoServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetorDaJornadaAplicacaoServico.cs" />
+    <Compile Include="TokenAplicacaoServico.cs" />
     <Compile Include="UsuarioAplicacaoServico.cs" />
+    <Compile Include="UsuarioDeClienteAplicacaoServico.cs" />
+    <Compile Include="UsuarioPerfilAplicacaoServico.cs" />
+    <Compile Include="VeiculoAPITraffilogAplicacaoServico.cs" />
+    <Compile Include="VeiculoAplicacaoServico.cs" />
+    <Compile Include="ViagemTraffilogAplicacaoServico.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acme.GeoGarbage.Dominio\Acme.GeoGarbage.Dominio.csproj">
       <Project>{28b665bd-a534-4be3-bf60-2aa05428f984}</Project>
       <Name>Acme.GeoGarbage.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Acme.GeoGarbage.Utilidades\Acme.GeoGarbage.Utilidades.csproj">
+      <Project>{0cc0c87c-2a44-4eda-afc4-9508babe750d}</Project>
+      <Name>Acme.GeoGarbage.Utilidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

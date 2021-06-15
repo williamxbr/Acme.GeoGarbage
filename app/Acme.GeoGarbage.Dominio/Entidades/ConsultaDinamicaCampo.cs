@@ -1,4 +1,5 @@
 ﻿using System;
+using Acme.GeoGarbage.Dominio.Enums;
 
 namespace Acme.GeoGarbage.Dominio.Entidades
 {
@@ -8,7 +9,9 @@ namespace Acme.GeoGarbage.Dominio.Entidades
         public Guid IdConsultaDinamica { get; set; }
         public Guid IdConstrutorCampo { get; set; }
         public string ApelidoCampo { get; set; }
-        public Enums.Enums.ETipoAgregacao TipoAgregacao { get; set; }
+        public TipoAgregacao TipoAgregacao { get; set; }
+        public int Apresentacao { get; set; }
+        public int Ordenacao { get; set; }
         public virtual ConsultaDinamica ConsultaDinamica { get; set; }
         public virtual ConstrutorCampo ConstrutorCampo { get; set; }
     }

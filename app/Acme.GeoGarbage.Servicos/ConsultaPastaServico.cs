@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Acme.GeoGarbage.Dominio.Entidades;
 using Acme.GeoGarbage.Dominio.Interfaces.Repositorios;
 using Acme.GeoGarbage.Dominio.Interfaces.Servicos;
@@ -18,6 +19,11 @@ namespace Acme.GeoGarbage.Servicos
         public ConsultaPasta BuscaPorPasta(string pasta)
         {
             return _consultaPastaRepositorio.BuscaPorPasta(pasta);
+        }
+
+        public IEnumerable<ConsultaPasta> BuscaTodosComItens()
+        {
+            return _consultaPastaRepositorio.BuscaTodosComItens();
         }
     }
 }

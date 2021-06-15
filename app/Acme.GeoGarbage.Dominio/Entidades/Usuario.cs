@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using static Acme.GeoGarbage.Dominio.Enums.Enums;
+using Acme.GeoGarbage.Dominio.Enums;
 
 namespace Acme.GeoGarbage.Dominio.Entidades
 {
@@ -12,10 +12,11 @@ namespace Acme.GeoGarbage.Dominio.Entidades
         public string Login { get; set; }
         public string Senha { get; set; }
         public bool Ativo { get; set; }
-        public ETipoUsuario TipoUsuario { get; set; }
-        public virtual IEnumerable<UsuariosDeCliente> UsuariosDeClientes { get; set; }
-        public virtual IEnumerable<UsuariosPerfil> UsuariosPerfils { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
+        public virtual IEnumerable<UsuarioDeCliente> UsuarioDeClientes { get; set; }
+        public virtual IEnumerable<UsuarioPerfil> UsuarioPerfils { get; set; }
         public virtual IEnumerable<DeviceInstalado> DeviceInstalados { get; set; }
+        public virtual PadraoDaConta PadraoDaContas { get; set; }
 
     }
 }

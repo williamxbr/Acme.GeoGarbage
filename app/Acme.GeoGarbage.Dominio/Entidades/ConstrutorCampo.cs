@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using static Acme.GeoGarbage.Dominio.Enums.Enums;
+using Acme.GeoGarbage.Dominio.Enums;
 
 namespace Acme.GeoGarbage.Dominio.Entidades
 {
@@ -11,7 +10,7 @@ namespace Acme.GeoGarbage.Dominio.Entidades
         public Guid IdConstrutorTabela { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
-        public ETipoDados Tipo { get; set; }
+        public TipoDados Tipo { get; set; }
         public bool Selecionavel { get; set; }
         public bool Localizavel { get; set; }
         public bool Ordenavel { get; set; }

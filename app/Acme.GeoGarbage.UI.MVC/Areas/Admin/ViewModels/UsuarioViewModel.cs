@@ -38,7 +38,7 @@ namespace Acme.GeoGarbage.UI.MVC.Areas.Admin.ViewModels
         public bool Ativo { get; set; }
 
         [DisplayName("TIPO DE USUARIO")]
-        public Enums.ETipoUsuario TipoUsuario { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
 
     }
 }

@@ -32,6 +32,10 @@ namespace Acme.GeoGarbage.Repositorio.ConfigEntidades
             Property(c => c.Senha)
                 .IsRequired()
                 .HasMaxLength(10);
+
+            HasOptional(c => c.PadraoDaContas)
+                .WithRequired(c => c.Usuario);
+            
         }
     }
 }

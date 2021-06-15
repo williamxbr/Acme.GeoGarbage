@@ -10,6 +10,7 @@ namespace Acme.GeoGarbage.UI.MVC.Areas.Relatorio.ViewModels
         public Guid IdConstrutorTabela { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
+        
         public virtual IEnumerable<ConstrutorCampoViewModel> ConstrutorCampos { get; set; }
     }
 }

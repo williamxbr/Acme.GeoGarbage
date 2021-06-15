@@ -17,7 +17,7 @@ namespace Acme.GeoGarbage.UI.MVC.Areas.Admin.Controllers
 
         [Authorize]
         [ChildActionOnly]
-        public ActionResult IndexPartial()
+        public ActionResult AdminViewPartial()
         {
             return PartialView();
         }

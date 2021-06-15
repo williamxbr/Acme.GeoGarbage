@@ -1,4 +1,128 @@
-﻿<div class="jumbotron">
+﻿<div class="jumbotron tela-monitoramento">
     <h1>Monitoramento</h1>
-    <p>Página em construção</p>
+    <div>
+        <table class="table controle-online-table">
+            <thead>
+                <tr>
+                    <th style="display:none">IDSetor</th>
+                    <th>SETOR</th>
+                    <th>STATUS</th>
+                    <th>HORÁRIO</th>
+                    <th width="200px">SERVIÇO EM EXECUÇÃO</th>
+                    <th>%</th>
+                    <th>PING</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<script>
+
+    $(document).ready(function () {
+        if (localStorage["abrir-segunda-aba"] == "true") {
+            $('[href=#TabHome2]').tab('show');
+            localStorage["abrir-segunda-aba"] = false;
+        }
+        coletarInformacoesSetores();
+        setInterval(coletarInformacoesSetores, $TEMPO_VERIFICACAO);
+    });
+
+    $(document).on("dblclick", ".controle-online-table tbody tr", function (event) {
+        var linha = $(this);
+        var idSetor = linha.find("td:first").text();
+
+        $.ajax({
+            method: 'POST',
+            url: "@Url.Action("Detalhes", "MonitoramentoOnline")",
+            data: { setor: idSetor },
+            success: function (data) {
+                $(".tela-monitoramento").html(data);
+            },
+            error: function (data) {
+                alert("Ocorreu um erro durante o processamento!");
+            }
+        });
+    });
+
+    function coletarInformacoesSetores() {
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("ListarSetoresEmMonitoramento", "MonitoramentoOnline")",
+            success: function (data) {
+                $(".controle-online-table").css("display", "");
+                $(".div-sem-setor").css("display", "none");
+                $(".controle-online-table tbody tr").remove();
+
+                if (data.length != 0) {
+
+                    //                 var linha = $("<tr/>");
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        var linha = $("<tr/>"); //William - 24/04/2017 - Estava criando uma linha para o loop
+
+                        var setor = data[i];
+
+                        var colunaIdSetor = $("<td style='display:none;' />");
+                        colunaIdSetor.text(setor.IdSetor);
+
+                        var colunaSetor = $("<td/>");
+                        colunaSetor.text(setor.Setor);
+
+                        var colunaStatus = $("<td/>");
+                        colunaStatus.text(setor.Status);
+
+                        var colunaHorario = $("<td/>");
+
+                        if (setor.Horario != 0) {
+                            var corHorario = pegarCorHorario(setor.Horario);
+                            var horarioCirculo = geometricForms.drawCircle(corHorario);
+                            horarioCirculo.css("margin-left", "35%");
+                            colunaHorario.append(horarioCirculo);
+                        }
+
+                        var colunaServicoEmExecucao = $("<td/>");
+                        var div = $("<div style='width:500px; height:20px;'/>");
+
+                        setorBar.element = div;
+                        setorBar.source = setor.ServicoEmExecucao;
+                        setorBar.draw();
+
+                        colunaServicoEmExecucao.append(setorBar.element);
+
+                        var colunaPercentual = $("<td/>");
+                        colunaPercentual.text(setor.PorcentagemDeConclusao);
+
+                        var colunaPing = $("<td/>");
+                        var corPing = pegarCorPing(setor.Ping);
+                        var pingCirculo = geometricForms.drawCircle(corPing);
+                        pingCirculo.css("margin-left", "35%");
+                        colunaPing.append(pingCirculo);
+
+                        linha.append(colunaIdSetor);
+                        linha.append(colunaSetor);
+                        linha.append(colunaStatus);
+                        linha.append(colunaHorario);
+                        linha.append(colunaServicoEmExecucao);
+                        linha.append(colunaPercentual);
+                        linha.append(colunaPing);
+
+                        $(".controle-online-table tbody").append(linha);
+                    }
+                } else {
+                    $(".controle-online-table").css("display", "none");
+                    var divSemSetor = $("<div/>");
+                    divSemSetor.addClass("div-sem-setor");
+                    divSemSetor.text("Nenhum setor com serviço em operação.");
+                    $(".tela-monitoramento").append(divSemSetor);
+                }
+            },
+            error: function (data) {
+                alert("Ocorreu um erro durante o processamento!");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,99 @@
+﻿@model System.String
+
+<img src="~/img/botao-voltar.png" style="float:right; width:50px; height:50px;" class="botao-voltar" />
+
+<div class="jumbotron tela-monitoramento" style="padding-top:0; height:600px">
+    <header>
+        <h1>Detalhe do Setor</h1>
+    </header>
+    <input type="hidden" class="id-setor-selecionado" value="@Model" />
+    <div class="painel-detalhes-setor" style="padding:10px; width:90%; margin:0 auto;"></div>
+    <div class="informacoes-setor" style="margin-top:50px"></div>
+    <script>
+        $(document).ready(function () {
+            obterDetalhesDoSetor();
+            setInterval(obterDetalhesDoSetor, $TEMPO_VERIFICACAO);
+        });
+
+        $(".botao-voltar").click(function () {
+            debugger;
+            window.location.reload(false);
+            localStorage["abrir-segunda-aba"] = true;
+        });
+
+        function obterDetalhesDoSetor() {
+            var idSetor = $(".id-setor-selecionado").val();
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("ConsultarSetorEmMonitoramento", "MonitoramentoOnline")",
+                data: { setor: idSetor },
+                success: function (data) {
+                    $(".painel-detalhes-setor").html("");
+                    debugger;
+                    var setor = data;
+                    var source = setor.ServicoEmExecucao;
+                    sectorLine.element = $(".painel-detalhes-setor");
+                    sectorLine.source = source;
+                    sectorLine.draw();
+
+                    var corPing = pegarCorPing(setor.Ping);
+                    var pingCircle = geometricForms.drawCircle(corPing);
+
+                    var horarioCircle = "";
+                    if (setor.Horario != 0) {
+                        var corHorario = pegarCorHorario(setor.Horario);
+                        horarioCircle = geometricForms.drawCircle(corHorario);
+                        pingCircle.css("margin-left", "45%");
+                        horarioCircle.css("margin-left", "45%");
+                    } else {
+                        horarioCircle = $("<div/>");
+                    }
+
+                    var tabelaInfo = "<table class='tabela-info' style='float:left; clear:both; margin-top:50px; margin-left:60px;'>" +
+                                        "<tr>" +
+                                            "<td>SETOR</td>" +
+                                            "<td>" + setor.Setor + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>STATUS</td>" +
+                                            "<td>" + setor.Status + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>HORÁRIO</td>" +
+                                            "<td>" + horarioCircle[0].outerHTML + "</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>%</td>" +
+                                            "<td>" + setor.PorcentagemDeConclusao + "%</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td>PING</td>" +
+                                            "<td>" + pingCircle[0].outerHTML + "</td>" +
+                                        "</tr>" +
+                                     "</table>";
+
+                    var divSetorInfo = $(".informacoes-setor");
+                    divSetorInfo.html("");
+                    divSetorInfo.append(tabelaInfo);
+
+                    /*  var tabelaMotorista = "<table border='1' style='margin-left:50px; margin-top:30px; float:left'>" +
+                                              "<tr><th>VEÍCULO</th><th>MOTORISTA</th><th>FOTO</th><th>TELEFONE</th></tr>" +
+                                              "<tr>" +
+                                                  "<td> " + veiculo.Placa + " </td>" +
+                                                  "<td> " + veiculo.Motorista + " </td>" +
+                                                  "<td><img src='" + veiculo.Foto +  "'/></td>" +
+                                                  "<td> " + veiculo.Telefone+ " </td>" +
+                                              "</tr>" +
+                                             "</table>";
+
+                      var divInfoMotorista = $(".informacoes-motorista");
+                      divInfoMotorista.html("");
+                      divInfoMotorista.append(tabelaMotorista);*/
+                },
+                error: function () {
+                    alert("Ocorreu um erro durante o processamento!");
+                }
+            });
+        }
+    </script>
+</div>

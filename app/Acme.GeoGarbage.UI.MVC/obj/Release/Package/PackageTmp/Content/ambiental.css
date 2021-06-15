@@ -1,0 +1,44 @@
+﻿
+
+.setor-line-circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 10px;
+}
+
+.setor-line-bar {
+    height: 5px;
+    width: 5%;
+    float: left;
+    margin-top: 18px;
+}
+
+.tabela-info tr {
+    font-weight: bolder;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    background: #0eb1f8;
+}
+
+.tabela-info tr:nth-child(2n+1) {
+    font-weight: bolder;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    background: #0c74b1;
+}
+
+.tabela-info tr:first-child td {
+    font-weight: bolder;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    background: #0d58b5;
+}
+
+.controle-online-table tbody tr {
+    cursor:pointer;
+}

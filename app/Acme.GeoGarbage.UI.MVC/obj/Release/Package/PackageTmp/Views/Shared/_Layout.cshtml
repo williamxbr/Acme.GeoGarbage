@@ -6,6 +6,15 @@
     <title>@ViewBag.Title - SmartDrive - Ambiental</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/jsgrid")
+    @Scripts.Render("~/bundles/fancygrid")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ambiental")
+    @RenderSection("scripts", required: false)
+
 </head>
 <body>
     <div class="heading">
@@ -23,11 +32,9 @@
         <button type="button" class="btn btn-default navbar-btn">SENHA</button>
         <button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-log-out"> </span>@Html.ActionLink(" SAIR", "Logout", "Login", new { Area = ""}, new {})</button>
     </div>
+
 </nav>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 
 </body>
 </html>

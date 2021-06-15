@@ -8,9 +8,9 @@ namespace Acme.GeoGarbage.Repositorio.ConfigEntidades
     {
         public ConsultaDinamicaCondicaoConfig()
         {
-            HasKey(f => f.IdConsultaDinamincaCondicao);
+            HasKey(f => f.IdConsultaDinamicaCondicao);
 
-            Property(f => f.IdConsultaDinamincaCondicao)
+            Property(f => f.IdConsultaDinamicaCondicao)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             HasRequired(f => f.ConstrutorCampo)

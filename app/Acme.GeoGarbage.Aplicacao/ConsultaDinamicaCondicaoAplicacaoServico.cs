@@ -1,4 +1,6 @@
-﻿using Acme.GeoGarbage.Dominio.Entidades;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Acme.GeoGarbage.Dominio.Entidades;
 using Acme.GeoGarbage.Dominio.Interfaces.Aplicacao;
 using Acme.GeoGarbage.Dominio.Interfaces.Servicos;
 
@@ -12,6 +14,18 @@ namespace Acme.GeoGarbage.Aplicacao
             : base(consultaDinamicaCondicaoServico)
         {
             _consultaDinamicaCondicaoServico = consultaDinamicaCondicaoServico;
+        }
+
+        public void RemoveTodosConsultaDinamicaCondicao(ConsultaDinamica consultaDinamica)
+        {
+            IEnumerable<ConsultaDinamicaCondicao> listaConsultaDinamicaCondicao = _consultaDinamicaCondicaoServico
+                .BuscaTodos()
+                .Where(p => p.IdConsultaDinamica == consultaDinamica.IdConsultaDinamica);
+
+            foreach (ConsultaDinamicaCondicao consultaDinamicaCondicao in listaConsultaDinamicaCondicao)
+            {
+                _consultaDinamicaCondicaoServico.Remove(consultaDinamicaCondicao);
+            }
         }
     }
 }

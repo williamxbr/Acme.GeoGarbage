@@ -8,6 +8,7 @@ namespace Acme.GeoGarbage.Dominio.Entidades
         public Guid IdDevice { get; set; }
         public string ChaveDevice { get; set; }
         public string ModeloDevice { get; set; }
+        public bool Ativo { get; set; }
         public virtual IEnumerable<DeviceInstalado> DevicesInstalados { get; set; }
     }
 }
